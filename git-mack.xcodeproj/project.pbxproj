@@ -9,19 +9,23 @@
 /* Begin PBXBuildFile section */
 		CBA36E6B29102CFC00E86520 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA36E6A29102CFC00E86520 /* AppDelegate.swift */; };
 		CBA36E6D29102CFC00E86520 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA36E6C29102CFC00E86520 /* SceneDelegate.swift */; };
-		CBA36E6F29102CFC00E86520 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA36E6E29102CFC00E86520 /* ViewController.swift */; };
 		CBA36E7429102CFE00E86520 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBA36E7329102CFE00E86520 /* Assets.xcassets */; };
 		CBA36E7729102CFE00E86520 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA36E7529102CFE00E86520 /* LaunchScreen.storyboard */; };
+		CBA36E7F2910390000E86520 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA36E7E2910390000E86520 /* SearchVC.swift */; };
+		CBA36E812910391A00E86520 /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA36E802910391A00E86520 /* FavoritesVC.swift */; };
+		CBA36E8529103D7400E86520 /* UIColor+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA36E8429103D7400E86520 /* UIColor+ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CBA36E6729102CFC00E86520 /* git-mack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "git-mack.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBA36E6A29102CFC00E86520 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBA36E6C29102CFC00E86520 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CBA36E6E29102CFC00E86520 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CBA36E7329102CFE00E86520 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CBA36E7629102CFE00E86520 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CBA36E7829102CFE00E86520 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CBA36E7E2910390000E86520 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
+		CBA36E802910391A00E86520 /* FavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
+		CBA36E8429103D7400E86520 /* UIColor+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +60,9 @@
 			children = (
 				CBA36E6A29102CFC00E86520 /* AppDelegate.swift */,
 				CBA36E6C29102CFC00E86520 /* SceneDelegate.swift */,
-				CBA36E6E29102CFC00E86520 /* ViewController.swift */,
+				CBA36E8429103D7400E86520 /* UIColor+ext.swift */,
+				CBA36E7E2910390000E86520 /* SearchVC.swift */,
+				CBA36E802910391A00E86520 /* FavoritesVC.swift */,
 				CBA36E7329102CFE00E86520 /* Assets.xcassets */,
 				CBA36E7529102CFE00E86520 /* LaunchScreen.storyboard */,
 				CBA36E7829102CFE00E86520 /* Info.plist */,
@@ -134,9 +140,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CBA36E6F29102CFC00E86520 /* ViewController.swift in Sources */,
+				CBA36E812910391A00E86520 /* FavoritesVC.swift in Sources */,
+				CBA36E7F2910390000E86520 /* SearchVC.swift in Sources */,
 				CBA36E6B29102CFC00E86520 /* AppDelegate.swift in Sources */,
 				CBA36E6D29102CFC00E86520 /* SceneDelegate.swift in Sources */,
+				CBA36E8529103D7400E86520 /* UIColor+ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,7 +288,6 @@
 				INFOPLIST_FILE = "git-mack/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -307,7 +314,6 @@
 				INFOPLIST_FILE = "git-mack/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
