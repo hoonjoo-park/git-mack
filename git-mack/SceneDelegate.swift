@@ -20,25 +20,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         window?.rootViewController = createTabBar()
         window?.makeKeyAndVisible()
-        window?.backgroundColor = UIColor(r: 15, g: 24, b: 44)
     }
     
     func createSearchNC() -> UINavigationController {
-        let searchVC = SearchVC()
+        let checkoutVC = CheckoutVC()
         
-        searchVC.title = "Search"
-        searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
+        checkoutVC.tabBarItem = UITabBarItem(title: "Checkout", image: UIImage(systemName: "magnifyingglass"), tag: 0)
         
-        return UINavigationController(rootViewController: searchVC)
+        return UINavigationController(rootViewController: checkoutVC)
     }
     
     func createFavoritesNC() -> UINavigationController {
-        let favoritesVC = FavoritesVC()
+        let starsVC = StarsVC()
         
-        favoritesVC.title = "Favorites"
-        favoritesVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+        starsVC.tabBarItem = UITabBarItem(title: "Stars", image: UIImage(systemName: "star"), tag: 1)
         
-        return UINavigationController(rootViewController: favoritesVC)
+        return UINavigationController(rootViewController: starsVC)
     }
     
     func createTabBar() -> UITabBarController {

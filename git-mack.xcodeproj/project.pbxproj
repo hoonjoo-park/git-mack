@@ -11,9 +11,13 @@
 		CBA36E6D29102CFC00E86520 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA36E6C29102CFC00E86520 /* SceneDelegate.swift */; };
 		CBA36E7429102CFE00E86520 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBA36E7329102CFE00E86520 /* Assets.xcassets */; };
 		CBA36E7729102CFE00E86520 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA36E7529102CFE00E86520 /* LaunchScreen.storyboard */; };
-		CBA36E7F2910390000E86520 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA36E7E2910390000E86520 /* SearchVC.swift */; };
-		CBA36E812910391A00E86520 /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA36E802910391A00E86520 /* FavoritesVC.swift */; };
+		CBA36E7F2910390000E86520 /* CheckoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA36E7E2910390000E86520 /* CheckoutVC.swift */; };
+		CBA36E812910391A00E86520 /* StarsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA36E802910391A00E86520 /* StarsVC.swift */; };
 		CBA36E8529103D7400E86520 /* UIColor+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA36E8429103D7400E86520 /* UIColor+ext.swift */; };
+		CBCAFB2729154BFD00BBA8D0 /* GMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCAFB2629154BFD00BBA8D0 /* GMButton.swift */; };
+		CBCAFB2929154F2200BBA8D0 /* GMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCAFB2829154F2200BBA8D0 /* GMTextField.swift */; };
+		CBCAFB2F2915815D00BBA8D0 /* UITextField-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCAFB2E2915815D00BBA8D0 /* UITextField-ext.swift */; };
+		CBCAFB3129159DEF00BBA8D0 /* FollowerListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCAFB3029159DEF00BBA8D0 /* FollowerListVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,9 +27,13 @@
 		CBA36E7329102CFE00E86520 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CBA36E7629102CFE00E86520 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CBA36E7829102CFE00E86520 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CBA36E7E2910390000E86520 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
-		CBA36E802910391A00E86520 /* FavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
+		CBA36E7E2910390000E86520 /* CheckoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutVC.swift; sourceTree = "<group>"; };
+		CBA36E802910391A00E86520 /* StarsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarsVC.swift; sourceTree = "<group>"; };
 		CBA36E8429103D7400E86520 /* UIColor+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+ext.swift"; sourceTree = "<group>"; };
+		CBCAFB2629154BFD00BBA8D0 /* GMButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMButton.swift; sourceTree = "<group>"; };
+		CBCAFB2829154F2200BBA8D0 /* GMTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMTextField.swift; sourceTree = "<group>"; };
+		CBCAFB2E2915815D00BBA8D0 /* UITextField-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField-ext.swift"; sourceTree = "<group>"; };
+		CBCAFB3029159DEF00BBA8D0 /* FollowerListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerListVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,11 +69,15 @@
 				CBA36E6A29102CFC00E86520 /* AppDelegate.swift */,
 				CBA36E6C29102CFC00E86520 /* SceneDelegate.swift */,
 				CBA36E8429103D7400E86520 /* UIColor+ext.swift */,
-				CBA36E7E2910390000E86520 /* SearchVC.swift */,
-				CBA36E802910391A00E86520 /* FavoritesVC.swift */,
+				CBCAFB2E2915815D00BBA8D0 /* UITextField-ext.swift */,
+				CBA36E7E2910390000E86520 /* CheckoutVC.swift */,
+				CBA36E802910391A00E86520 /* StarsVC.swift */,
+				CBCAFB2629154BFD00BBA8D0 /* GMButton.swift */,
+				CBCAFB2829154F2200BBA8D0 /* GMTextField.swift */,
 				CBA36E7329102CFE00E86520 /* Assets.xcassets */,
 				CBA36E7529102CFE00E86520 /* LaunchScreen.storyboard */,
 				CBA36E7829102CFE00E86520 /* Info.plist */,
+				CBCAFB3029159DEF00BBA8D0 /* FollowerListVC.swift */,
 			);
 			path = "git-mack";
 			sourceTree = "<group>";
@@ -140,9 +152,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CBA36E812910391A00E86520 /* FavoritesVC.swift in Sources */,
-				CBA36E7F2910390000E86520 /* SearchVC.swift in Sources */,
+				CBCAFB3129159DEF00BBA8D0 /* FollowerListVC.swift in Sources */,
+				CBCAFB2929154F2200BBA8D0 /* GMTextField.swift in Sources */,
+				CBA36E812910391A00E86520 /* StarsVC.swift in Sources */,
+				CBA36E7F2910390000E86520 /* CheckoutVC.swift in Sources */,
 				CBA36E6B29102CFC00E86520 /* AppDelegate.swift in Sources */,
+				CBCAFB2729154BFD00BBA8D0 /* GMButton.swift in Sources */,
+				CBCAFB2F2915815D00BBA8D0 /* UITextField-ext.swift in Sources */,
 				CBA36E6D29102CFC00E86520 /* SceneDelegate.swift in Sources */,
 				CBA36E8529103D7400E86520 /* UIColor+ext.swift in Sources */,
 			);
