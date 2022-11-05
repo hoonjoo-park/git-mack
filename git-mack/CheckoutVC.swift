@@ -19,6 +19,7 @@ class CheckoutVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(r: 15, g: 24, b: 44)
+        
         configureUI()
     }
     
@@ -74,6 +75,7 @@ class CheckoutVC: UIViewController {
         screenTitle.translatesAutoresizingMaskIntoConstraints = false
         screenTitle.text = "다른 개발자들의\n\"깃맥\"을 찾아보세요"
         screenTitle.numberOfLines = 2
+        screenTitle.textColor = .white
         screenTitle.font = UIFont.systemFont(ofSize: 28, weight: .black)
         
         NSLayoutConstraint.activate([
