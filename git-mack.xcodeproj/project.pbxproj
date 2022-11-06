@@ -18,6 +18,10 @@
 		CBCAFB2929154F2200BBA8D0 /* GMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCAFB2829154F2200BBA8D0 /* GMTextField.swift */; };
 		CBCAFB2F2915815D00BBA8D0 /* UITextField-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCAFB2E2915815D00BBA8D0 /* UITextField-ext.swift */; };
 		CBCAFB3129159DEF00BBA8D0 /* FollowerListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCAFB3029159DEF00BBA8D0 /* FollowerListVC.swift */; };
+		CBE2131D2917A7E100801A77 /* GMTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2131C2917A7E100801A77 /* GMTitleLabel.swift */; };
+		CBE2131F2917A7F500801A77 /* GMBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2131E2917A7F500801A77 /* GMBodyLabel.swift */; };
+		CBE213252917AB6200801A77 /* GMAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE213242917AB6200801A77 /* GMAlertVC.swift */; };
+		CBE213292917B35700801A77 /* UIViewController+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE213282917B35700801A77 /* UIViewController+ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +38,10 @@
 		CBCAFB2829154F2200BBA8D0 /* GMTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMTextField.swift; sourceTree = "<group>"; };
 		CBCAFB2E2915815D00BBA8D0 /* UITextField-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField-ext.swift"; sourceTree = "<group>"; };
 		CBCAFB3029159DEF00BBA8D0 /* FollowerListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerListVC.swift; sourceTree = "<group>"; };
+		CBE2131C2917A7E100801A77 /* GMTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMTitleLabel.swift; sourceTree = "<group>"; };
+		CBE2131E2917A7F500801A77 /* GMBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMBodyLabel.swift; sourceTree = "<group>"; };
+		CBE213242917AB6200801A77 /* GMAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMAlertVC.swift; sourceTree = "<group>"; };
+		CBE213282917B35700801A77 /* UIViewController+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,20 +74,56 @@
 		CBA36E6929102CFC00E86520 /* git-mack */ = {
 			isa = PBXGroup;
 			children = (
-				CBA36E6A29102CFC00E86520 /* AppDelegate.swift */,
-				CBA36E6C29102CFC00E86520 /* SceneDelegate.swift */,
-				CBA36E8429103D7400E86520 /* UIColor+ext.swift */,
-				CBCAFB2E2915815D00BBA8D0 /* UITextField-ext.swift */,
-				CBA36E7E2910390000E86520 /* CheckoutVC.swift */,
-				CBA36E802910391A00E86520 /* StarsVC.swift */,
+				CBE213232917A8CD00801A77 /* Support */,
+				CBE213222917A83B00801A77 /* Extensions */,
+				CBE213212917A81100801A77 /* Controllers */,
+				CBE213202917A80400801A77 /* Screens */,
+			);
+			path = "git-mack";
+			sourceTree = "<group>";
+		};
+		CBE213202917A80400801A77 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				CBE2131C2917A7E100801A77 /* GMTitleLabel.swift */,
+				CBE2131E2917A7F500801A77 /* GMBodyLabel.swift */,
 				CBCAFB2629154BFD00BBA8D0 /* GMButton.swift */,
 				CBCAFB2829154F2200BBA8D0 /* GMTextField.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		CBE213212917A81100801A77 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CBA36E7E2910390000E86520 /* CheckoutVC.swift */,
+				CBCAFB3029159DEF00BBA8D0 /* FollowerListVC.swift */,
+				CBA36E802910391A00E86520 /* StarsVC.swift */,
+				CBE213242917AB6200801A77 /* GMAlertVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CBE213222917A83B00801A77 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CBA36E8429103D7400E86520 /* UIColor+ext.swift */,
+				CBCAFB2E2915815D00BBA8D0 /* UITextField-ext.swift */,
+				CBE213282917B35700801A77 /* UIViewController+ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CBE213232917A8CD00801A77 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				CBA36E6A29102CFC00E86520 /* AppDelegate.swift */,
+				CBA36E6C29102CFC00E86520 /* SceneDelegate.swift */,
 				CBA36E7329102CFE00E86520 /* Assets.xcassets */,
 				CBA36E7529102CFE00E86520 /* LaunchScreen.storyboard */,
 				CBA36E7829102CFE00E86520 /* Info.plist */,
-				CBCAFB3029159DEF00BBA8D0 /* FollowerListVC.swift */,
 			);
-			path = "git-mack";
+			path = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,10 +199,14 @@
 				CBCAFB3129159DEF00BBA8D0 /* FollowerListVC.swift in Sources */,
 				CBCAFB2929154F2200BBA8D0 /* GMTextField.swift in Sources */,
 				CBA36E812910391A00E86520 /* StarsVC.swift in Sources */,
+				CBE2131D2917A7E100801A77 /* GMTitleLabel.swift in Sources */,
 				CBA36E7F2910390000E86520 /* CheckoutVC.swift in Sources */,
+				CBE213292917B35700801A77 /* UIViewController+ext.swift in Sources */,
 				CBA36E6B29102CFC00E86520 /* AppDelegate.swift in Sources */,
+				CBE2131F2917A7F500801A77 /* GMBodyLabel.swift in Sources */,
 				CBCAFB2729154BFD00BBA8D0 /* GMButton.swift in Sources */,
 				CBCAFB2F2915815D00BBA8D0 /* UITextField-ext.swift in Sources */,
+				CBE213252917AB6200801A77 /* GMAlertVC.swift in Sources */,
 				CBA36E6D29102CFC00E86520 /* SceneDelegate.swift in Sources */,
 				CBA36E8529103D7400E86520 /* UIColor+ext.swift in Sources */,
 			);
@@ -301,7 +349,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TQX48B3375;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "git-mack/Info.plist";
+				INFOPLIST_FILE = "git-mack/Support/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -327,7 +375,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TQX48B3375;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "git-mack/Info.plist";
+				INFOPLIST_FILE = "git-mack/Support/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

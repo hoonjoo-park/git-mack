@@ -30,7 +30,10 @@ class CheckoutVC: UIViewController {
     }
     
     @objc func pushToFollowerListVC() {
-        guard !isUsernameEmpty else { return }
+        guard !isUsernameEmpty else {
+            presentGMAlertOnMainThread(title: "잠깐!", message: "검색하고자 하는 상대방의 깃헙 아이디를 입력해 주세요 🥹")
+            return
+        }
         
         let followerListVC = FollowerListVC()
         
