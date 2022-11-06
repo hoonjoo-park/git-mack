@@ -22,6 +22,8 @@
 		CBE2131F2917A7F500801A77 /* GMBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2131E2917A7F500801A77 /* GMBodyLabel.swift */; };
 		CBE213252917AB6200801A77 /* GMAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE213242917AB6200801A77 /* GMAlertVC.swift */; };
 		CBE213292917B35700801A77 /* UIViewController+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE213282917B35700801A77 /* UIViewController+ext.swift */; };
+		CBE2132C2917C7BD00801A77 /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2132B2917C7BD00801A77 /* Follower.swift */; };
+		CBE2132E2917C7C600801A77 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2132D2917C7C600801A77 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		CBE2131E2917A7F500801A77 /* GMBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMBodyLabel.swift; sourceTree = "<group>"; };
 		CBE213242917AB6200801A77 /* GMAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMAlertVC.swift; sourceTree = "<group>"; };
 		CBE213282917B35700801A77 /* UIViewController+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ext.swift"; sourceTree = "<group>"; };
+		CBE2132B2917C7BD00801A77 /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
+		CBE2132D2917C7C600801A77 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +78,8 @@
 		CBA36E6929102CFC00E86520 /* git-mack */ = {
 			isa = PBXGroup;
 			children = (
-				CBE213232917A8CD00801A77 /* Support */,
+				CBE2132A2917C7A600801A77 /* Models */,
+				CBE213232917A8CD00801A77 /* App */,
 				CBE213222917A83B00801A77 /* Extensions */,
 				CBE213212917A81100801A77 /* Controllers */,
 				CBE213202917A80400801A77 /* Screens */,
@@ -114,7 +119,7 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		CBE213232917A8CD00801A77 /* Support */ = {
+		CBE213232917A8CD00801A77 /* App */ = {
 			isa = PBXGroup;
 			children = (
 				CBA36E6A29102CFC00E86520 /* AppDelegate.swift */,
@@ -123,7 +128,16 @@
 				CBA36E7529102CFE00E86520 /* LaunchScreen.storyboard */,
 				CBA36E7829102CFE00E86520 /* Info.plist */,
 			);
-			path = Support;
+			path = App;
+			sourceTree = "<group>";
+		};
+		CBE2132A2917C7A600801A77 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CBE2132B2917C7BD00801A77 /* Follower.swift */,
+				CBE2132D2917C7C600801A77 /* User.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,12 +211,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBCAFB3129159DEF00BBA8D0 /* FollowerListVC.swift in Sources */,
+				CBE2132C2917C7BD00801A77 /* Follower.swift in Sources */,
 				CBCAFB2929154F2200BBA8D0 /* GMTextField.swift in Sources */,
 				CBA36E812910391A00E86520 /* StarsVC.swift in Sources */,
 				CBE2131D2917A7E100801A77 /* GMTitleLabel.swift in Sources */,
 				CBA36E7F2910390000E86520 /* CheckoutVC.swift in Sources */,
 				CBE213292917B35700801A77 /* UIViewController+ext.swift in Sources */,
 				CBA36E6B29102CFC00E86520 /* AppDelegate.swift in Sources */,
+				CBE2132E2917C7C600801A77 /* User.swift in Sources */,
 				CBE2131F2917A7F500801A77 /* GMBodyLabel.swift in Sources */,
 				CBCAFB2729154BFD00BBA8D0 /* GMButton.swift in Sources */,
 				CBCAFB2F2915815D00BBA8D0 /* UITextField-ext.swift in Sources */,
@@ -349,7 +365,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TQX48B3375;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "git-mack/Support/Info.plist";
+				INFOPLIST_FILE = "git-mack/App/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -375,7 +391,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TQX48B3375;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "git-mack/Support/Info.plist";
+				INFOPLIST_FILE = "git-mack/App/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
