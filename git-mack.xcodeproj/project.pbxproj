@@ -24,6 +24,8 @@
 		CBE213292917B35700801A77 /* UIViewController+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE213282917B35700801A77 /* UIViewController+ext.swift */; };
 		CBE2132C2917C7BD00801A77 /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2132B2917C7BD00801A77 /* Follower.swift */; };
 		CBE2132E2917C7C600801A77 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2132D2917C7C600801A77 /* User.swift */; };
+		CBE21331291813BC00801A77 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE21330291813BC00801A77 /* ErrorMessage.swift */; };
+		CBE21334291814D400801A77 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE21333291814D400801A77 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		CBE213282917B35700801A77 /* UIViewController+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ext.swift"; sourceTree = "<group>"; };
 		CBE2132B2917C7BD00801A77 /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
 		CBE2132D2917C7C600801A77 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CBE21330291813BC00801A77 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
+		CBE21333291814D400801A77 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,11 +82,13 @@
 		CBA36E6929102CFC00E86520 /* git-mack */ = {
 			isa = PBXGroup;
 			children = (
-				CBE2132A2917C7A600801A77 /* Models */,
 				CBE213232917A8CD00801A77 /* App */,
-				CBE213222917A83B00801A77 /* Extensions */,
+				CBE21332291814B600801A77 /* Managers */,
 				CBE213212917A81100801A77 /* Controllers */,
+				CBE213222917A83B00801A77 /* Extensions */,
+				CBE2132A2917C7A600801A77 /* Models */,
 				CBE213202917A80400801A77 /* Screens */,
+				CBE2132F2918132400801A77 /* Utils */,
 			);
 			path = "git-mack";
 			sourceTree = "<group>";
@@ -138,6 +144,22 @@
 				CBE2132D2917C7C600801A77 /* User.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		CBE2132F2918132400801A77 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CBE21330291813BC00801A77 /* ErrorMessage.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		CBE21332291814B600801A77 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				CBE21333291814D400801A77 /* NetworkManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,8 +242,10 @@
 				CBA36E6B29102CFC00E86520 /* AppDelegate.swift in Sources */,
 				CBE2132E2917C7C600801A77 /* User.swift in Sources */,
 				CBE2131F2917A7F500801A77 /* GMBodyLabel.swift in Sources */,
+				CBE21334291814D400801A77 /* NetworkManager.swift in Sources */,
 				CBCAFB2729154BFD00BBA8D0 /* GMButton.swift in Sources */,
 				CBCAFB2F2915815D00BBA8D0 /* UITextField-ext.swift in Sources */,
+				CBE21331291813BC00801A77 /* ErrorMessage.swift in Sources */,
 				CBE213252917AB6200801A77 /* GMAlertVC.swift in Sources */,
 				CBA36E6D29102CFC00E86520 /* SceneDelegate.swift in Sources */,
 				CBA36E8529103D7400E86520 /* UIColor+ext.swift in Sources */,
