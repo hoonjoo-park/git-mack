@@ -36,33 +36,19 @@ class FollowerListVC: UIViewController {
     }
     
     func configureCollectionView() {
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createThreeColumnFlowLayout())
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createThreeColumnFlowLayout(view: view))
         view.addSubview(collectionView)
+        collectionView.backgroundColor = UIColor(r: 15, g: 24, b: 44)
         collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.reuseID)
     }
     
-    func createThreeColumnFlowLayout() -> UICollectionViewFlowLayout {
-        let width = view.bounds.width
-        let padding: CGFloat = 12
-        let itemSpacing: CGFloat = 10
-        let containerWidth = width - (padding * 2) - (itemSpacing * 2)
-        let itemWidth = containerWidth / 3
-        
-        let flowLayout = UICollectionViewFlowLayout()
-        
-        flowLayout.sectionInset = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
-        flowLayout.itemSize = CGSize(width: itemWidth, height: itemWidth + 40)
-        
-        return flowLayout
-    }
-    
     func fetchFollowers() {
-        NetworkManager.shared.fetchFollowers(for: username, page: 1) { result in
+        NetworkManager.shared.fetchFollowers(for: username, page: 1) { [weak self] result in
+            guard let self = self else { return }
             
             switch result {
-                
             case .success(let followers):
-                self.followers = followers
+                self.followers.append(contentsOf: followers)
                 self.updateData()
                 
             case .failure(let error):

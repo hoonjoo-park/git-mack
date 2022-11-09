@@ -16,6 +16,7 @@
 		CBA36E7F2910390000E86520 /* CheckoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA36E7E2910390000E86520 /* CheckoutVC.swift */; };
 		CBA36E812910391A00E86520 /* StarsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA36E802910391A00E86520 /* StarsVC.swift */; };
 		CBA36E8529103D7400E86520 /* UIColor+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA36E8429103D7400E86520 /* UIColor+ext.swift */; };
+		CBACD23F291BC1D500234AE7 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBACD23E291BC1D500234AE7 /* UIHelper.swift */; };
 		CBCAFB2729154BFD00BBA8D0 /* GMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCAFB2629154BFD00BBA8D0 /* GMButton.swift */; };
 		CBCAFB2929154F2200BBA8D0 /* GMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCAFB2829154F2200BBA8D0 /* GMTextField.swift */; };
 		CBCAFB2F2915815D00BBA8D0 /* UITextField-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCAFB2E2915815D00BBA8D0 /* UITextField-ext.swift */; };
@@ -42,6 +43,7 @@
 		CBA36E7E2910390000E86520 /* CheckoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutVC.swift; sourceTree = "<group>"; };
 		CBA36E802910391A00E86520 /* StarsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarsVC.swift; sourceTree = "<group>"; };
 		CBA36E8429103D7400E86520 /* UIColor+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+ext.swift"; sourceTree = "<group>"; };
+		CBACD23E291BC1D500234AE7 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		CBCAFB2629154BFD00BBA8D0 /* GMButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMButton.swift; sourceTree = "<group>"; };
 		CBCAFB2829154F2200BBA8D0 /* GMTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMTextField.swift; sourceTree = "<group>"; };
 		CBCAFB2E2915815D00BBA8D0 /* UITextField-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField-ext.swift"; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				CBE21330291813BC00801A77 /* ErrorMessage.swift */,
+				CBACD23E291BC1D500234AE7 /* UIHelper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				CBCAFB3129159DEF00BBA8D0 /* FollowerListVC.swift in Sources */,
 				CBE2132C2917C7BD00801A77 /* Follower.swift in Sources */,
 				CBCAFB2929154F2200BBA8D0 /* GMTextField.swift in Sources */,
+				CBACD23F291BC1D500234AE7 /* UIHelper.swift in Sources */,
 				CBA36E812910391A00E86520 /* StarsVC.swift in Sources */,
 				CBE2131D2917A7E100801A77 /* GMTitleLabel.swift in Sources */,
 				CB984882291952EA0063141F /* GMAvatarImageView.swift in Sources */,
