@@ -14,6 +14,7 @@ class FollowerListVC: UIViewController {
     var username: String!
     var page = 1
     var followers: [Follower] = []
+    var filteredFollowers: [Follower] = []
     var hasMoreData = true
     
     var collectionView: UICollectionView!
@@ -25,24 +26,12 @@ class FollowerListVC: UIViewController {
         configureCollectionView()
         fetchFollowers(username: username, page: page)
         configureDataSource()
+        configureSearchBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
-    }
-    
-    func configureDefault() {
-        view.backgroundColor = UIColor(r: 15, g: 24, b: 44)
-        navigationController?.navigationBar.prefersLargeTitles = true
-    }
-    
-    func configureCollectionView() {
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createThreeColumnFlowLayout(view: view))
-        view.addSubview(collectionView)
-        collectionView.delegate = self
-        collectionView.backgroundColor = UIColor(r: 15, g: 24, b: 44)
-        collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.reuseID)
     }
     
     func fetchFollowers(username: String, page: Int) {
@@ -58,7 +47,7 @@ class FollowerListVC: UIViewController {
                 if followers.count < 50 { self.hasMoreData = false }
                 
                 self.followers.append(contentsOf: followers)
-                self.updateData()
+                self.updateData(followers: followers)
                 
                 if followers.isEmpty {
                     let message = "해당 사용자를 아무도 팔로우 하고 있지 않습니다 🤔"
@@ -73,6 +62,26 @@ class FollowerListVC: UIViewController {
         }
     }
     
+    func updateData(followers: [Follower]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Follower>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(followers)
+        DispatchQueue.main.async { self.dataSource.apply(snapshot, animatingDifferences: true) }
+    }
+    
+    func configureDefault() {
+        view.backgroundColor = UIColor(r: 15, g: 24, b: 44)
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    func configureCollectionView() {
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createThreeColumnFlowLayout(view: view))
+        view.addSubview(collectionView)
+        collectionView.delegate = self
+        collectionView.backgroundColor = UIColor(r: 15, g: 24, b: 44)
+        collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.reuseID)
+    }
+    
     func configureDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, Follower>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, follower) -> UICollectionViewCell? in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.reuseID, for: indexPath) as! FollowerCell
@@ -81,11 +90,16 @@ class FollowerListVC: UIViewController {
         })
     }
     
-    func updateData() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Follower>()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(followers)
-        DispatchQueue.main.async { self.dataSource.apply(snapshot, animatingDifferences: true) }
+    func configureSearchBar() {
+        let searchController = UISearchController()
+        
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "유저 아이디를 입력해 필터링해보세요"
+        
+        navigationItem.searchController = searchController
+        navigationItem.searchController?.obscuresBackgroundDuringPresentation = false
+        
     }
 }
 
@@ -102,5 +116,20 @@ extension FollowerListVC: UICollectionViewDelegate {
             page += 1
             fetchFollowers(username: username, page: page)
         }
+    }
+}
+
+extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else { return }
+        
+        if text.isEmpty { return updateData(followers: followers) }
+        
+        filteredFollowers = followers.filter { $0.login.lowercased().contains(text.lowercased()) }
+        updateData(followers: filteredFollowers)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        updateData(followers: followers)
     }
 }
