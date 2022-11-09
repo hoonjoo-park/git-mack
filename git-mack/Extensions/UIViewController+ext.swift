@@ -49,4 +49,10 @@ extension UIViewController {
             loadingContainerView = nil
         }
     }
+    
+    func showNotFoundView(message: String, view: UIView) {
+        let notFoundView = GMNotFoundView(message: message)
+        notFoundView.frame = view.bounds
+        view.addSubview(notFoundView)
+    }
 }

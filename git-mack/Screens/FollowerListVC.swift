@@ -60,6 +60,13 @@ class FollowerListVC: UIViewController {
                 self.followers.append(contentsOf: followers)
                 self.updateData()
                 
+                if followers.isEmpty {
+                    let message = "해당 사용자를 아무도 팔로우 하고 있지 않습니다 🤔"
+                    DispatchQueue.main.async {
+                        self.showNotFoundView(message: message, view: self.view)
+                    }
+                }
+                
             case .failure(let error):
                 self.presentGMAlertOnMainThread(title: "오류", message: error.rawValue)
             }
