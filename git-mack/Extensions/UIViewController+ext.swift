@@ -7,6 +7,8 @@
 
 import UIKit
 
+fileprivate var loadingContainerView: UIView!
+
 extension UIViewController {
     func presentGMAlertOnMainThread(title: String, message: String) {
         DispatchQueue.main.async {
@@ -16,6 +18,35 @@ extension UIViewController {
             alertVC.modalPresentationStyle = .overFullScreen
             
             self.present(alertVC, animated: true)
+        }
+    }
+    
+    func showLoadingView() {
+        loadingContainerView = UIView(frame: view.bounds)
+        view.addSubview(loadingContainerView)
+        
+        loadingContainerView.backgroundColor = .black
+        loadingContainerView.alpha = 0
+        
+        UIView.animate(withDuration: 0.3) { loadingContainerView.alpha = 0.8 }
+        
+        let activityIndicatorView = UIActivityIndicatorView(style: .large)
+        loadingContainerView.addSubview(activityIndicatorView)
+        
+        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            activityIndicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+        ])
+        
+        activityIndicatorView.startAnimating()
+    }
+    
+    func hideLoadingView() {
+        DispatchQueue.main.async {
+            loadingContainerView.removeFromSuperview()
+            loadingContainerView = nil
         }
     }
 }

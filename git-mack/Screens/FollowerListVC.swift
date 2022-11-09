@@ -46,8 +46,12 @@ class FollowerListVC: UIViewController {
     }
     
     func fetchFollowers(username: String, page: Int) {
+        showLoadingView()
+        
         NetworkManager.shared.fetchFollowers(for: username, page: page) { [weak self] result in
             guard let self = self else { return }
+            
+            self.hideLoadingView()
             
             switch result {
             case .success(let followers):
