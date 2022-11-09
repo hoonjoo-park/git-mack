@@ -10,6 +10,7 @@ import UIKit
 class GMAvatarImageView: UIImageView {
     
     let defaultImage = UIImage(named: "place-holder")!
+    let cache = NetworkManager.shared.cache
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,6 +36,13 @@ class GMAvatarImageView: UIImageView {
         let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
             guard let self = self else { return }
             
+            let cacheKey = NSString(string: imageUrl)
+            
+            if let cachedImage = self.cache.object(forKey: cacheKey) {
+                DispatchQueue.main.async { self.image = cachedImage }
+                return
+            }
+            
             // 에러가 nil일 때만 코드를 실행
             guard error == nil else { return }
             
@@ -43,11 +51,12 @@ class GMAvatarImageView: UIImageView {
             
             guard let data = data else { return }
             
-            let image = UIImage(data: data)
+            guard let image = UIImage(data: data) else { return }
             
-            DispatchQueue.main.async {
-                self.image = image
-            }
+            // 이미지를 캐싱
+            self.cache.setObject(image, forKey: cacheKey)
+            
+            DispatchQueue.main.async { self.image = image }
         }
         
         task.resume()
