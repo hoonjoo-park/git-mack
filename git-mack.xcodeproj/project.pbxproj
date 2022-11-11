@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB8C1D39291E683F00C1A523 /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8C1D38291E683F00C1A523 /* UserInfoVC.swift */; };
 		CB984880291951D50063141F /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB98487F291951D50063141F /* FollowerCell.swift */; };
 		CB984882291952EA0063141F /* GMAvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB984881291952EA0063141F /* GMAvatarImageView.swift */; };
 		CBA36E6B29102CFC00E86520 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA36E6A29102CFC00E86520 /* AppDelegate.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB8C1D38291E683F00C1A523 /* UserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
 		CB98487F291951D50063141F /* FollowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCell.swift; sourceTree = "<group>"; };
 		CB984881291952EA0063141F /* GMAvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMAvatarImageView.swift; sourceTree = "<group>"; };
 		CBA36E6729102CFC00E86520 /* git-mack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "git-mack.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,6 +132,7 @@
 				CBCAFB3029159DEF00BBA8D0 /* FollowerListVC.swift */,
 				CBA36E802910391A00E86520 /* StarsVC.swift */,
 				CBE213242917AB6200801A77 /* GMAlertVC.swift */,
+				CB8C1D38291E683F00C1A523 /* UserInfoVC.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				CBE2132E2917C7C600801A77 /* User.swift in Sources */,
 				CBE2131F2917A7F500801A77 /* GMBodyLabel.swift in Sources */,
 				CBE21334291814D400801A77 /* NetworkManager.swift in Sources */,
+				CB8C1D39291E683F00C1A523 /* UserInfoVC.swift in Sources */,
 				CB984880291951D50063141F /* FollowerCell.swift in Sources */,
 				CBCAFB2729154BFD00BBA8D0 /* GMButton.swift in Sources */,
 				CBCAFB2F2915815D00BBA8D0 /* UITextField-ext.swift in Sources */,

@@ -16,6 +16,7 @@ class FollowerListVC: UIViewController {
     var followers: [Follower] = []
     var filteredFollowers: [Follower] = []
     var hasMoreData = true
+    var isSearching = false
     
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
@@ -69,6 +70,8 @@ class FollowerListVC: UIViewController {
         DispatchQueue.main.async { self.dataSource.apply(snapshot, animatingDifferences: true) }
     }
     
+    
+    
     func configureDefault() {
         view.backgroundColor = UIColor(r: 15, g: 24, b: 44)
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -117,13 +120,29 @@ extension FollowerListVC: UICollectionViewDelegate {
             fetchFollowers(username: username, page: page)
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let follwersArray = filteredFollowers.isEmpty ? followers : filteredFollowers
+        let follower = follwersArray[indexPath.item]
+        
+        let userInfoVC = UserInfoVC()
+        let navigationController = UINavigationController(rootViewController: userInfoVC)
+        userInfoVC.username = follower.login
+        
+        present(navigationController, animated: true)
+        
+    }
 }
 
 extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else { return }
         
-        if text.isEmpty { return updateData(followers: followers) }
+        if text.isEmpty {
+            updateData(followers: followers)
+            filteredFollowers = []
+            return
+        }
         
         filteredFollowers = followers.filter { $0.login.lowercased().contains(text.lowercased()) }
         updateData(followers: filteredFollowers)
@@ -131,5 +150,6 @@ extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         updateData(followers: followers)
+        filteredFollowers = []
     }
 }
