@@ -8,6 +8,7 @@
 import Foundation
 
 struct User: Codable {
+    let id: Int
     var login: String
     var htmlUrl: String
     var avatarUrl: String
