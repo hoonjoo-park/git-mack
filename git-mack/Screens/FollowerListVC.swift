@@ -140,7 +140,7 @@ extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
         
         if text.isEmpty {
             updateData(followers: followers)
-            filteredFollowers = []
+            filteredFollowers.removeAll()
             return
         }
         
@@ -150,6 +150,6 @@ extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         updateData(followers: followers)
-        filteredFollowers = []
+        filteredFollowers.removeAll()
     }
 }
