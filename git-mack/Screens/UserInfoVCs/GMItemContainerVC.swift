@@ -10,6 +10,7 @@ import UIKit
 class GMItemContainerVC: UIViewController {
     
     var user: User!
+    var delegate: UserInfoVCDelegate!
     
     let stackView = UIStackView()
     let leftItemView = GMInfoCountView()
@@ -29,6 +30,7 @@ class GMItemContainerVC: UIViewController {
         super.viewDidLoad()
         configureViewControllor()
         configureStackView()
+        configureButtonAction()
         configureUI()
         
     }
@@ -47,6 +49,10 @@ class GMItemContainerVC: UIViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
     }
     
+    private func configureButtonAction() {
+        itemButton.addTarget(self, action: #selector(onButtonTapped), for: .touchUpInside)
+    }
+    
     private func configureUI() {
         view.addSubview(stackView)
         view.addSubview(itemButton)
@@ -63,6 +69,7 @@ class GMItemContainerVC: UIViewController {
             itemButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             itemButton.heightAnchor.constraint(equalToConstant: 45),
         ])
-        
     }
+    
+    @objc func onButtonTapped() {}
 }

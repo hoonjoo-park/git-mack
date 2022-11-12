@@ -18,4 +18,6 @@ class GMProjectsItemVC: GMItemContainerVC {
         rightItemView.set(type: .gists, count: user.publicGists)
         itemButton.set(backgroundColor: GMColors.blue, title: "프로필 바로가기", titleColor: .white)
     }
+    
+    override func onButtonTapped() { delegate.onProjectButtonTapped(user: user) }
 }

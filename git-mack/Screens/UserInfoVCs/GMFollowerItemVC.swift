@@ -19,4 +19,8 @@ class GMFollowerItemVC: GMItemContainerVC {
         rightItemView.set(type: .following, count: user.following)
         itemButton.set(backgroundColor: GMColors.yellow, title: "깃맥 확인하기", titleColor: .black)
     }
+    
+    override func onButtonTapped() {
+        delegate.onFollowerButtonTapped(user: user)
+    }
 }

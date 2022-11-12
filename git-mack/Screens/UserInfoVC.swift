@@ -6,6 +6,12 @@
 //
 
 import UIKit
+import SafariServices
+
+protocol UserInfoVCDelegate: AnyObject {
+    func onProjectButtonTapped(user: User)
+    func onFollowerButtonTapped(user: User)
+}
 
 class UserInfoVC: UIViewController {
     
@@ -16,8 +22,9 @@ class UserInfoVC: UIViewController {
     var infoViews: [UIView] = []
     
     var username: String!
+    weak var delegate: FollowerListVCDelegate!
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
@@ -31,12 +38,7 @@ class UserInfoVC: UIViewController {
             
             switch result {
             case .success(let user):
-                DispatchQueue.main.async {
-                    self.add(childVC: GMProfileInfoVC(user: user), containerView: self.profileInfoView)
-                    self.add(childVC: GMProjectsItemVC(user: user), containerView: self.projectsView)
-                    self.add(childVC: GMFollowerItemVC(user: user), containerView: self.followersView)
-                    self.dateLabel.text = "Github 가입: \(user.createdAt.toDate())"
-                }
+                DispatchQueue.main.async { self.configureUIElements(user: user) }
             case .failure(let error):
                 self.presentGMAlertOnMainThread(title: "오류", message: error.rawValue)
             }
@@ -47,6 +49,19 @@ class UserInfoVC: UIViewController {
         view.backgroundColor = GMColors.mainNavy
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissViewController))
         navigationItem.rightBarButtonItem = doneButton
+    }
+    
+    private func configureUIElements(user: User) {
+        let projectsItemVC = GMProjectsItemVC(user: user)
+        let followerItemVC = GMFollowerItemVC(user: user)
+        
+        projectsItemVC.delegate = self
+        followerItemVC.delegate = self
+        
+        self.add(childVC: GMProfileInfoVC(user: user), containerView: self.profileInfoView)
+        self.add(childVC: projectsItemVC, containerView: self.projectsView)
+        self.add(childVC: followerItemVC, containerView: self.followersView)
+        self.dateLabel.text = "Github 가입: \(user.createdAt.toDate())"
     }
     
     private func configureUI() {
@@ -92,4 +107,22 @@ class UserInfoVC: UIViewController {
     @objc func dismissViewController() {
         dismiss(animated: true)
     }
+}
+
+extension UserInfoVC: UserInfoVCDelegate {
+    func onProjectButtonTapped(user: User) {
+        guard let url = URL(string: user.htmlUrl) else {
+            presentGMAlertOnMainThread(title: "오류", message: "Github URL에 이상이 있는 것 같습니다. 다시 시도해 주세요.")
+            return
+        }
+        
+        let safariVC = SFSafariViewController(url: url)
+        present(safariVC, animated: true)
+    }
+    
+    func onFollowerButtonTapped(user: User) {
+        delegate.onRequestFollowers(username: user.login)
+        
+        dismissViewController()
+    }    
 }
