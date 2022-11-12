@@ -35,6 +35,7 @@ class UserInfoVC: UIViewController {
                     self.add(childVC: GMProfileInfoVC(user: user), containerView: self.profileInfoView)
                     self.add(childVC: GMProjectsItemVC(user: user), containerView: self.projectsView)
                     self.add(childVC: GMFollowerItemVC(user: user), containerView: self.followersView)
+                    self.dateLabel.text = "Github 가입: \(user.createdAt.toDate())"
                 }
             case .failure(let error):
                 self.presentGMAlertOnMainThread(title: "오류", message: error.rawValue)
@@ -54,7 +55,6 @@ class UserInfoVC: UIViewController {
         
         infoViews = [profileInfoView, projectsView, followersView, dateLabel]
         
-        dateLabel.text = "날짜가 들어갈 예정"
         dateLabel.textAlignment = .center
         
         for infoView in infoViews {
