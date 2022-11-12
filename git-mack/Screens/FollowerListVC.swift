@@ -73,7 +73,7 @@ class FollowerListVC: UIViewController {
     
     
     func configureDefault() {
-        view.backgroundColor = UIColor(r: 15, g: 24, b: 44)
+        view.backgroundColor = GMColors.mainNavy
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
@@ -81,7 +81,7 @@ class FollowerListVC: UIViewController {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createThreeColumnFlowLayout(view: view))
         view.addSubview(collectionView)
         collectionView.delegate = self
-        collectionView.backgroundColor = UIColor(r: 15, g: 24, b: 44)
+        collectionView.backgroundColor = GMColors.subNavy
         collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.reuseID)
     }
     

@@ -13,8 +13,8 @@ class GMProfileInfoVC: UIViewController {
     let avatarImageView = GMAvatarImageView(frame: .zero)
     let usernameLabel = GMTitleLabel(fontSize: 34, textAlign: .left, color: .white)
     let nameLabel = GMSecondaryTitleLabel(fontSize: 18, color: .white)
-    let locationImageView = UIImageView()
-    let locationLabel = GMSecondaryTitleLabel(fontSize: 18, color: .white)
+    let companyImageView = UIImageView()
+    let companyLabel = GMSecondaryTitleLabel(fontSize: 18, color: .white)
     let bioLabel = GMBodyLabel(textAlign: .left)
     
     init(user: User) {
@@ -38,8 +38,8 @@ class GMProfileInfoVC: UIViewController {
         view.addSubview(avatarImageView)
         view.addSubview(usernameLabel)
         view.addSubview(nameLabel)
-        view.addSubview(locationImageView)
-        view.addSubview(locationLabel)
+        view.addSubview(companyImageView)
+        view.addSubview(companyLabel)
         view.addSubview(bioLabel)
     }
     
@@ -47,13 +47,13 @@ class GMProfileInfoVC: UIViewController {
         avatarImageView.downloadImage(imageUrl: user.avatarUrl)
         usernameLabel.text = user.login
         nameLabel.text = user.name ?? "이름 미등록"
-        locationLabel.text = user.location ?? "위치 미등록"
+        companyLabel.text = user.company ?? "직장 미등록"
         bioLabel.text = user.bio ?? "등록된 자기소개가 없습니다😥"
         bioLabel.textColor = .white
         
-        locationImageView.image = UIImage(systemName: SFSymbols.location)
-        locationImageView.tintColor = .white
-        locationImageView.translatesAutoresizingMaskIntoConstraints = false
+        companyImageView.image = UIImage(systemName: SFSymbols.company)
+        companyImageView.tintColor = .white
+        companyImageView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func configureUI() {
@@ -76,15 +76,15 @@ class GMProfileInfoVC: UIViewController {
             nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             nameLabel.heightAnchor.constraint(equalToConstant: 20),
             
-            locationImageView.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor),
-            locationImageView.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: itemSpacing),
-            locationImageView.widthAnchor.constraint(equalToConstant: 20),
-            locationImageView.heightAnchor.constraint(equalToConstant: 20),
+            companyImageView.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor),
+            companyImageView.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: itemSpacing),
+            companyImageView.widthAnchor.constraint(equalToConstant: 20),
+            companyImageView.heightAnchor.constraint(equalToConstant: 20),
             
-            locationLabel.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor),
-            locationLabel.leadingAnchor.constraint(equalTo: locationImageView.trailingAnchor, constant: 5),
-            locationLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            locationLabel.heightAnchor.constraint(equalToConstant: 20),
+            companyLabel.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor),
+            companyLabel.leadingAnchor.constraint(equalTo: companyImageView.trailingAnchor, constant: 5),
+            companyLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            companyLabel.heightAnchor.constraint(equalToConstant: 20),
             
             bioLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: itemSpacing),
             bioLabel.leadingAnchor.constraint(equalTo: avatarImageView.leadingAnchor),

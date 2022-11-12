@@ -13,7 +13,7 @@ class GMAlertVC: UIViewController {
     let alertModal:UIView = UIView()
     let titleLabel:UILabel = GMTitleLabel(fontSize: 18, textAlign: .center, color: .white)
     let bodyLabel:UILabel = GMBodyLabel(textAlign: .center)
-    let confirmButton:UIButton = GMButton(backgroundColor: UIColor(r: 1, g: 93, b: 228), title: "Approve!", titleColor: .white)
+    let confirmButton:UIButton = GMButton(backgroundColor: GMColors.blue, title: "Approve!", titleColor: .white)
     
     var alertTitle: String?
     var message: String?
@@ -31,7 +31,7 @@ class GMAlertVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
+        view.backgroundColor = GMColors.mainNavy
         
         configureUI()
     }
@@ -48,7 +48,7 @@ class GMAlertVC: UIViewController {
         
         alertModal.translatesAutoresizingMaskIntoConstraints = false
         alertModal.layer.cornerRadius = 15
-        alertModal.backgroundColor = UIColor(r: 27, g: 37, b: 56)
+        alertModal.backgroundColor = GMColors.subNavy
         
         NSLayoutConstraint.activate([
             alertModal.centerXAnchor.constraint(equalTo: view.centerXAnchor),

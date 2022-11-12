@@ -18,7 +18,7 @@ class CheckoutVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(r: 15, g: 24, b: 44)
+        view.backgroundColor = GMColors.mainNavy
         
         configureUI()
     }

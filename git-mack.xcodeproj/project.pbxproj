@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB789993291F9A240057F6DE /* GMInfoCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB789992291F9A240057F6DE /* GMInfoCountView.swift */; };
 		CB8C1D39291E683F00C1A523 /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8C1D38291E683F00C1A523 /* UserInfoVC.swift */; };
 		CB8C7D2E291EC607007D928B /* GMSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8C7D2D291EC607007D928B /* GMSecondaryTitleLabel.swift */; };
 		CB8C7D31291ECC48007D928B /* GMProfileInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8C7D30291ECC48007D928B /* GMProfileInfoVC.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB789992291F9A240057F6DE /* GMInfoCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMInfoCountView.swift; sourceTree = "<group>"; };
 		CB8C1D38291E683F00C1A523 /* UserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
 		CB8C7D2D291EC607007D928B /* GMSecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMSecondaryTitleLabel.swift; sourceTree = "<group>"; };
 		CB8C7D30291ECC48007D928B /* GMProfileInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMProfileInfoVC.swift; sourceTree = "<group>"; };
@@ -137,7 +139,6 @@
 		CBE213202917A80400801A77 /* Customs */ = {
 			isa = PBXGroup;
 			children = (
-				CB8C7D2F291ECBBB007D928B /* UserInfoVCs */,
 				CB98487E291951550063141F /* Cell */,
 				CBE2131C2917A7E100801A77 /* GMTitleLabel.swift */,
 				CBE2131E2917A7F500801A77 /* GMBodyLabel.swift */,
@@ -146,6 +147,7 @@
 				CBCAFB2829154F2200BBA8D0 /* GMTextField.swift */,
 				CB984881291952EA0063141F /* GMAvatarImageView.swift */,
 				CBACD240291BEF4900234AE7 /* GMNotFoundView.swift */,
+				CB789992291F9A240057F6DE /* GMInfoCountView.swift */,
 			);
 			path = Customs;
 			sourceTree = "<group>";
@@ -153,6 +155,7 @@
 		CBE213212917A81100801A77 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				CB8C7D2F291ECBBB007D928B /* UserInfoVCs */,
 				CBA36E7E2910390000E86520 /* CheckoutVC.swift */,
 				CBCAFB3029159DEF00BBA8D0 /* FollowerListVC.swift */,
 				CBA36E802910391A00E86520 /* StarsVC.swift */,
@@ -301,6 +304,7 @@
 				CBE21334291814D400801A77 /* NetworkManager.swift in Sources */,
 				CB8C1D39291E683F00C1A523 /* UserInfoVC.swift in Sources */,
 				CB8C7D2E291EC607007D928B /* GMSecondaryTitleLabel.swift in Sources */,
+				CB789993291F9A240057F6DE /* GMInfoCountView.swift in Sources */,
 				CB984880291951D50063141F /* FollowerCell.swift in Sources */,
 				CBCAFB2729154BFD00BBA8D0 /* GMButton.swift in Sources */,
 				CBCAFB2F2915815D00BBA8D0 /* UITextField-ext.swift in Sources */,

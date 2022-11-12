@@ -33,6 +33,8 @@ class UserInfoVC: UIViewController {
             case .success(let user):
                 DispatchQueue.main.async {
                     self.add(childVC: GMProfileInfoVC(user: user), containerView: self.profileInfoView)
+                    self.add(childVC: GMProjectsItemVC(user: user), containerView: self.projectsView)
+                    self.add(childVC: GMFollowerItemVC(user: user), containerView: self.followersView)
                 }
             case .failure(let error):
                 self.presentGMAlertOnMainThread(title: "오류", message: error.rawValue)
@@ -41,14 +43,14 @@ class UserInfoVC: UIViewController {
     }
     
     private func configureViewController() {
-        view.backgroundColor = UIColor(r: 15, g: 24, b: 44)
+        view.backgroundColor = GMColors.mainNavy
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissViewController))
         navigationItem.rightBarButtonItem = doneButton
     }
     
     private func configureUI() {
         let padding: CGFloat = 20
-        let boxHeight: CGFloat = 140
+        let itemHeight: CGFloat = 160
         
         infoViews = [profileInfoView, projectsView, followersView, dateLabel]
         
@@ -65,18 +67,15 @@ class UserInfoVC: UIViewController {
             ])
         }
         
-        projectsView.backgroundColor = .green
-        followersView.backgroundColor = .yellow
-        
         NSLayoutConstraint.activate([
             profileInfoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
             profileInfoView.heightAnchor.constraint(equalToConstant: 180),
             
             projectsView.topAnchor.constraint(equalTo: profileInfoView.bottomAnchor, constant: padding),
-            projectsView.heightAnchor.constraint(equalToConstant: boxHeight),
+            projectsView.heightAnchor.constraint(equalToConstant: itemHeight),
             
             followersView.topAnchor.constraint(equalTo: projectsView.bottomAnchor, constant: padding),
-            followersView.heightAnchor.constraint(equalToConstant: boxHeight),
+            followersView.heightAnchor.constraint(equalToConstant: itemHeight),
             
             dateLabel.topAnchor.constraint(equalTo: followersView.bottomAnchor, constant: padding),
             dateLabel.heightAnchor.constraint(equalToConstant: 18),

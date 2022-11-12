@@ -34,4 +34,9 @@ class GMButton: UIButton {
         translatesAutoresizingMaskIntoConstraints = false
     }
     
+    func set(backgroundColor: UIColor, title: String, titleColor: UIColor) {
+        self.backgroundColor = backgroundColor
+        self.setTitle(title, for: .normal)
+        self.setTitleColor(titleColor, for: .normal)
+    }
 }

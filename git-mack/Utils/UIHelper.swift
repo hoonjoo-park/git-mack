@@ -24,3 +24,11 @@ struct UIHelper {
         return flowLayout
     }
 }
+
+
+enum GMColors {
+    static let blue = UIColor(r: 1, g: 93, b: 228)
+    static let yellow = UIColor(r: 255, g: 213, b: 0)
+    static let mainNavy = UIColor(r: 15, g: 24, b: 44)
+    static let subNavy = UIColor(r: 27, g: 37, b: 56)
+}
