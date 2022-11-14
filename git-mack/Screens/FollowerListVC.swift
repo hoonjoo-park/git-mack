@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol FollowerListVCDelegate: class {
+protocol FollowerListVCDelegate: AnyObject {
     func onRequestFollowers(username: String)
 }
 
@@ -78,7 +78,38 @@ class FollowerListVC: UIViewController {
     
     func configureDefault() {
         view.backgroundColor = GMColors.mainNavy
+        
+        let rightButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addFavorite))
+        navigationItem.rightBarButtonItem = rightButton
         navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    @objc func addFavorite() {
+        showLoadingView()
+        
+        NetworkManager.shared.fetchUser(for: username) { [weak self] result in
+            guard let self = self else { return }
+            self.hideLoadingView()
+            
+            switch result {
+            case .success(let user):
+                let favorite = Follower(id: user.id, login: user.login, avatarUrl: user.htmlUrl)
+                
+                PersistenceManager.updateFavorites(userToAdd: favorite, action: .add) { [weak self] error in
+                    guard let self = self else { return }
+                    
+                    guard let error = error else {
+                        self.presentGMAlertOnMainThread(title: "성공", message: "상대방을 나의 즐겨찾기에 추가했습니다 🥳")
+                        return
+                    }
+                    self.presentGMAlertOnMainThread(title: "오류 ", message: error.rawValue)
+                }
+                
+            case .failure(let error):
+                self.presentGMAlertOnMainThread(title: "오류 ", message: error.rawValue)
+            }
+        }
+            
     }
     
     func configureCollectionView() {

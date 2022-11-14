@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB7074B72922607D0024BCBF /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7074B62922607D0024BCBF /* PersistenceManager.swift */; };
 		CB789993291F9A240057F6DE /* GMInfoCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB789992291F9A240057F6DE /* GMInfoCountView.swift */; };
 		CB789995291FB2B20057F6DE /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB789994291FB2B20057F6DE /* String+Ext.swift */; };
 		CB789997291FB2BE0057F6DE /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB789996291FB2BE0057F6DE /* Date+Ext.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB7074B62922607D0024BCBF /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		CB789992291F9A240057F6DE /* GMInfoCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMInfoCountView.swift; sourceTree = "<group>"; };
 		CB789994291FB2B20057F6DE /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		CB789996291FB2BE0057F6DE /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				CBE21333291814D400801A77 /* NetworkManager.swift */,
+				CB7074B62922607D0024BCBF /* PersistenceManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				CBE2132E2917C7C600801A77 /* User.swift in Sources */,
 				CBE2131F2917A7F500801A77 /* GMBodyLabel.swift in Sources */,
 				CBE21334291814D400801A77 /* NetworkManager.swift in Sources */,
+				CB7074B72922607D0024BCBF /* PersistenceManager.swift in Sources */,
 				CB789995291FB2B20057F6DE /* String+Ext.swift in Sources */,
 				CB8C1D39291E683F00C1A523 /* UserInfoVC.swift in Sources */,
 				CB8C7D2E291EC607007D928B /* GMSecondaryTitleLabel.swift in Sources */,
