@@ -15,29 +15,29 @@ enum PersistenceManager {
     static private let defaults = UserDefaults.standard
     
     enum Keys {
-        static let favorites = "Favorites"
+        static let stars = "Stars"
     }
     
-    static func updateFavorites(userToAdd: Follower, action: PersistenceActionType, completion: @escaping (GMErrorMessage?) -> Void ) {
-        retrieveFavorites { result in
+    static func updateStars(user: Follower, action: PersistenceActionType, completion: @escaping (GMErrorMessage?) -> Void ) {
+        retrieveStars { result in
             switch result {
-            case .success(let favorites):
-                var retrievedFavorites = favorites
+            case .success(let stars):
+                var retrievedStars = stars
                 
                 switch action {
                 case .add:
-                    guard !retrievedFavorites.contains(userToAdd) else {
-                        completion(.favoriteAlreadyExists)
+                    guard !retrievedStars.contains(user) else {
+                        completion(.starAlreadyExists)
                         return
                     }
                     
-                    retrievedFavorites.append(userToAdd)
+                    retrievedStars.append(user)
 
                 case .remove:
-                    retrievedFavorites.removeAll { $0.login == userToAdd.login }
+                    retrievedStars.removeAll { $0.login == user.login }
                 }
                 
-                completion(addFavorites(favorites: retrievedFavorites))
+                completion(addStars(stars: retrievedStars))
                 
             case .failure(let error):
                 completion(error)
@@ -45,29 +45,29 @@ enum PersistenceManager {
         }
     }
     
-    static func retrieveFavorites(completion: @escaping (Result<[Follower], GMErrorMessage>) -> Void) {
-        guard let favoritesData = defaults.object(forKey: Keys.favorites) as? Data else {
+    static func retrieveStars(completion: @escaping (Result<[Follower], GMErrorMessage>) -> Void) {
+        guard let starsData = defaults.object(forKey: Keys.stars) as? Data else {
             completion(.success([]))
             return
         }
         
         do {
             let decoder = JSONDecoder()
-            let decodedFavorites = try decoder.decode([Follower].self, from: favoritesData)
-            completion(.success(decodedFavorites))
+            let decodedStars = try decoder.decode([Follower].self, from: starsData)
+            completion(.success(decodedStars))
         } catch {
-            completion(.failure(.invalidFavorites))
+            completion(.failure(.invalidStars))
         }
     }
     
-    static func addFavorites(favorites: [Follower]) -> GMErrorMessage? {
+    static func addStars(stars: [Follower]) -> GMErrorMessage? {
         do {
             let encoder = JSONEncoder()
-            let encodedFavorites = try encoder.encode(favorites)
-            defaults.set(encodedFavorites, forKey: Keys.favorites)
+            let encodedStars = try encoder.encode(stars)
+            defaults.set(encodedStars, forKey: Keys.stars)
             return nil
         } catch {
-            return .unableToAddFavorite
+            return .unableToAddStar
         }
     }
 }

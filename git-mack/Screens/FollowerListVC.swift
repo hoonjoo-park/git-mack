@@ -79,12 +79,12 @@ class FollowerListVC: UIViewController {
     func configureDefault() {
         view.backgroundColor = GMColors.mainNavy
         
-        let rightButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addFavorite))
+        let rightButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addStar))
         navigationItem.rightBarButtonItem = rightButton
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-    @objc func addFavorite() {
+    @objc func addStar() {
         showLoadingView()
         
         NetworkManager.shared.fetchUser(for: username) { [weak self] result in
@@ -93,9 +93,9 @@ class FollowerListVC: UIViewController {
             
             switch result {
             case .success(let user):
-                let favorite = Follower(id: user.id, login: user.login, avatarUrl: user.htmlUrl)
+                let favorite = Follower(id: user.id, login: user.login, avatarUrl: user.avatarUrl)
                 
-                PersistenceManager.updateFavorites(userToAdd: favorite, action: .add) { [weak self] error in
+                PersistenceManager.updateStars(user: favorite, action: .add) { [weak self] error in
                     guard let self = self else { return }
                     
                     guard let error = error else {

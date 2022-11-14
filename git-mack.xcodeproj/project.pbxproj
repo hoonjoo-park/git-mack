@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CB7074B72922607D0024BCBF /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7074B62922607D0024BCBF /* PersistenceManager.swift */; };
+		CB7074B929227CFE0024BCBF /* StarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7074B829227CFE0024BCBF /* StarCell.swift */; };
 		CB789993291F9A240057F6DE /* GMInfoCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB789992291F9A240057F6DE /* GMInfoCountView.swift */; };
 		CB789995291FB2B20057F6DE /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB789994291FB2B20057F6DE /* String+Ext.swift */; };
 		CB789997291FB2BE0057F6DE /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB789996291FB2BE0057F6DE /* Date+Ext.swift */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		CB7074B62922607D0024BCBF /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		CB7074B829227CFE0024BCBF /* StarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarCell.swift; sourceTree = "<group>"; };
 		CB789992291F9A240057F6DE /* GMInfoCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMInfoCountView.swift; sourceTree = "<group>"; };
 		CB789994291FB2B20057F6DE /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		CB789996291FB2BE0057F6DE /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				CB98487F291951D50063141F /* FollowerCell.swift */,
+				CB7074B829227CFE0024BCBF /* StarCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				CBE213292917B35700801A77 /* UIViewController+ext.swift in Sources */,
 				CB8C7D35291ED6E2007D928B /* GMItemContainerVC.swift in Sources */,
 				CBA36E6B29102CFC00E86520 /* AppDelegate.swift in Sources */,
+				CB7074B929227CFE0024BCBF /* StarCell.swift in Sources */,
 				CBE2132E2917C7C600801A77 /* User.swift in Sources */,
 				CBE2131F2917A7F500801A77 /* GMBodyLabel.swift in Sources */,
 				CBE21334291814D400801A77 /* NetworkManager.swift in Sources */,
