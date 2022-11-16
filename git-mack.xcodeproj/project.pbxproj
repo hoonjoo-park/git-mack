@@ -11,6 +11,7 @@
 		CB0C56872925063B008B50CD /* GMAlertContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0C56862925063B008B50CD /* GMAlertContainerView.swift */; };
 		CB0C568929253F34008B50CD /* GMDataLoadingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0C568829253F34008B50CD /* GMDataLoadingVC.swift */; };
 		CB0C568B29254A3E008B50CD /* UIView+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0C568A29254A3E008B50CD /* UIView+ext.swift */; };
+		CB0C568D29256339008B50CD /* UITableView+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0C568C29256339008B50CD /* UITableView+ext.swift */; };
 		CB7074B72922607D0024BCBF /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7074B62922607D0024BCBF /* PersistenceManager.swift */; };
 		CB7074B929227CFE0024BCBF /* StarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7074B829227CFE0024BCBF /* StarCell.swift */; };
 		CB789993291F9A240057F6DE /* GMInfoCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB789992291F9A240057F6DE /* GMInfoCountView.swift */; };
@@ -52,6 +53,7 @@
 		CB0C56862925063B008B50CD /* GMAlertContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMAlertContainerView.swift; sourceTree = "<group>"; };
 		CB0C568829253F34008B50CD /* GMDataLoadingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMDataLoadingVC.swift; sourceTree = "<group>"; };
 		CB0C568A29254A3E008B50CD /* UIView+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ext.swift"; sourceTree = "<group>"; };
+		CB0C568C29256339008B50CD /* UITableView+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+ext.swift"; sourceTree = "<group>"; };
 		CB7074B62922607D0024BCBF /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		CB7074B829227CFE0024BCBF /* StarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarCell.swift; sourceTree = "<group>"; };
 		CB789992291F9A240057F6DE /* GMInfoCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMInfoCountView.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				CBE213282917B35700801A77 /* UIViewController+ext.swift */,
 				CB789996291FB2BE0057F6DE /* Date+ext.swift */,
 				CB0C568A29254A3E008B50CD /* UIView+ext.swift */,
+				CB0C568C29256339008B50CD /* UITableView+ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				CB7074B72922607D0024BCBF /* PersistenceManager.swift in Sources */,
 				CB8C1D39291E683F00C1A523 /* UserInfoVC.swift in Sources */,
 				CB8C7D2E291EC607007D928B /* GMSecondaryTitleLabel.swift in Sources */,
+				CB0C568D29256339008B50CD /* UITableView+ext.swift in Sources */,
 				CB0C568B29254A3E008B50CD /* UIView+ext.swift in Sources */,
 				CB0C56852924FDB4008B50CD /* GMTabBarController.swift in Sources */,
 				CB789993291F9A240057F6DE /* GMInfoCountView.swift in Sources */,

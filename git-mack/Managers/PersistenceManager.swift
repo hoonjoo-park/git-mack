@@ -21,23 +21,21 @@ enum PersistenceManager {
     static func updateStars(user: Follower, action: PersistenceActionType, completion: @escaping (GMErrorMessage?) -> Void ) {
         retrieveStars { result in
             switch result {
-            case .success(let stars):
-                var retrievedStars = stars
-                
+            case .success(var stars):
                 switch action {
                 case .add:
-                    guard !retrievedStars.contains(user) else {
+                    guard !stars.contains(user) else {
                         completion(.starAlreadyExists)
                         return
                     }
-                    
-                    retrievedStars.append(user)
+
+                    stars.append(user)
 
                 case .remove:
-                    retrievedStars.removeAll { $0.login == user.login }
+                    stars.removeAll { $0.login == user.login }
                 }
                 
-                completion(addStars(stars: retrievedStars))
+                completion(addStars(stars: stars))
                 
             case .failure(let error):
                 completion(error)

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StarsVC: UIViewController {
+class StarsVC: GMDataLoadingVC {
     let starTableView = UITableView()
     
     var stars: [Follower] = []
@@ -34,15 +34,18 @@ class StarsVC: UIViewController {
         
         starTableView.frame = view.bounds
         starTableView.rowHeight = 80
-        starTableView.backgroundColor = GMColors.mainNavy
+        starTableView.backgroundColor = GMColors.subNavy
         starTableView.dataSource = self
         starTableView.delegate = self
+        starTableView.removeExcessCells()
         
         starTableView.register(StarCell.self, forCellReuseIdentifier: StarCell.reuseID)
         
     }
     
     func fetchStars() {
+        showLoadingView()
+        
         PersistenceManager.retrieveStars { [weak self] result in
             guard let self = self else { return }
             
@@ -62,6 +65,8 @@ class StarsVC: UIViewController {
                 self.presentGMAlertOnMainThread(title: "오류", message: error.rawValue)
             }
         }
+        
+        hideLoadingView()
     }
 }
 
@@ -86,14 +91,14 @@ extension StarsVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
-
-        let star = stars[indexPath.row]
-        stars.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .left)
         
-        PersistenceManager.updateStars(user: star, action: .remove) { [weak self] error in
+        PersistenceManager.updateStars(user: stars[indexPath.row], action: .remove) { [weak self] error in
             guard let self = self else { return }
-            guard let error = error else { return }
+            guard let error = error else {
+                self.stars.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .left)
+                return
+            }
             
             self.presentGMAlertOnMainThread(title: "오류", message: error.rawValue)
         }
