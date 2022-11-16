@@ -21,6 +21,7 @@ class FollowerListVC: GMDataLoadingVC {
     var filteredFollowers: [Follower] = []
     var hasMoreData = true
     var isSearching = false
+    var isFetching = false
     
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
@@ -52,6 +53,7 @@ class FollowerListVC: GMDataLoadingVC {
     
     func fetchFollowers(username: String, page: Int) {
         showLoadingView()
+        isFetching = true
         
         NetworkManager.shared.fetchFollowers(for: username, page: page) { [weak self] result in
             guard let self = self else { return }
@@ -63,7 +65,7 @@ class FollowerListVC: GMDataLoadingVC {
                 if followers.count < 50 { self.hasMoreData = false }
                 
                 self.followers.append(contentsOf: followers)
-                self.updateData(followers: followers)
+                self.updateData(followers: self.followers)
                 
                 if followers.isEmpty {
                     let message = "해당 사용자를 아무도 팔로우 하고 있지 않습니다 🤔"
@@ -76,6 +78,9 @@ class FollowerListVC: GMDataLoadingVC {
                 self.presentGMAlertOnMainThread(title: "오류", message: error.rawValue)
             }
         }
+        
+        isFetching = false
+        
     }
     
     func updateData(followers: [Follower]) {
@@ -159,7 +164,7 @@ extension FollowerListVC: UICollectionViewDelegate {
         let containerHeight = scrollView.frame.size.height
         
         if offsetY + containerHeight + 50 >= scrollHeight {
-            guard hasMoreData else { return }
+            guard hasMoreData, !isFetching else { return }
             
             page += 1
             fetchFollowers(username: username, page: page)
@@ -201,6 +206,7 @@ extension FollowerListVC: FollowerListVCDelegate {
         followers.removeAll()
         filteredFollowers.removeAll()
         collectionView.setContentOffset(.zero, animated: false)
+        collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
         fetchFollowers(username: username, page: page)
     }
 }
