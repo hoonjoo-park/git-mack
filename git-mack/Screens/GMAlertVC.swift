@@ -33,7 +33,12 @@ class GMAlertVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .black.withAlphaComponent(0.7)
         
+        addSubviews()
         configureUI()
+    }
+    
+    func addSubviews() {
+        view.addSubviews(alertModal, titleLabel, confirmButton, bodyLabel)
     }
     
     func configureUI() {
@@ -44,8 +49,6 @@ class GMAlertVC: UIViewController {
     }
     
     func configureAlertModal() {
-        view.addSubview(alertModal)
-        
         NSLayoutConstraint.activate([
             alertModal.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             alertModal.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -53,8 +56,6 @@ class GMAlertVC: UIViewController {
     }
     
     func configureAlertTitle() {
-        view.addSubview(titleLabel)
-        
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.text = alertTitle ?? "알 수 없는 오류가 발생했습니다"
         
@@ -67,8 +68,6 @@ class GMAlertVC: UIViewController {
     }
     
     func configureConfirmButton() {
-        view.addSubview(confirmButton)
-        
         confirmButton.addTarget(self, action: #selector(dismissGMAlertVC), for: .touchUpInside)
         
         confirmButton.translatesAutoresizingMaskIntoConstraints = false
@@ -83,8 +82,6 @@ class GMAlertVC: UIViewController {
     }
     
     func configureAlertBody() {
-        view.addSubview(bodyLabel)
-        
         bodyLabel.translatesAutoresizingMaskIntoConstraints = false
         bodyLabel.text = message ?? "잠시 후 다시 시도해 주시기 바랍니다."
         

@@ -13,6 +13,7 @@ class GMNotFoundView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        addSubviews()
         configureImageView()
         configureMeesageLabel()
     }
@@ -26,9 +27,11 @@ class GMNotFoundView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func addSubviews() {
+        addSubviews(notFoundImageView, messageLabel)
+    }
+    
     private func configureImageView() {
-        addSubview(notFoundImageView)
-        
         notFoundImageView.image = GMImages.square3D
         notFoundImageView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -41,8 +44,6 @@ class GMNotFoundView: UIView {
     }
     
     private func configureMeesageLabel() {
-        addSubview(messageLabel)
-        
         messageLabel.numberOfLines = 3
         
         NSLayoutConstraint.activate([

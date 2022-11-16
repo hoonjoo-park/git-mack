@@ -6,11 +6,9 @@
 //
 
 import UIKit
-import SafariServices
 
 protocol UserInfoVCDelegate: AnyObject {
-    func onProjectButtonTapped(user: User)
-    func onFollowerButtonTapped(user: User)
+    func onRequestFollowers(username: String)
 }
 
 class UserInfoVC: UIViewController {
@@ -22,7 +20,7 @@ class UserInfoVC: UIViewController {
     var infoViews: [UIView] = []
     
     var username: String!
-    weak var delegate: FollowerListVCDelegate!
+    weak var delegate: UserInfoVCDelegate!
     
     
     override func viewDidLoad() {
@@ -51,16 +49,10 @@ class UserInfoVC: UIViewController {
         navigationItem.rightBarButtonItem = doneButton
     }
     
-    private func configureUIElements(user: User) {
-        let projectsItemVC = GMProjectsItemVC(user: user)
-        let followerItemVC = GMFollowerItemVC(user: user)
-        
-        projectsItemVC.delegate = self
-        followerItemVC.delegate = self
-        
+    private func configureUIElements(user: User) {    
         self.add(childVC: GMProfileInfoVC(user: user), containerView: self.profileInfoView)
-        self.add(childVC: projectsItemVC, containerView: self.projectsView)
-        self.add(childVC: followerItemVC, containerView: self.followersView)
+        self.add(childVC: GMProjectsItemVC(user: user, delegate: self), containerView: self.projectsView)
+        self.add(childVC: GMFollowerItemVC(user: user, delegate: self), containerView: self.followersView)
         self.dateLabel.text = "Github 가입: \(user.createdAt.toYearMonthDate())"
     }
     
@@ -93,7 +85,7 @@ class UserInfoVC: UIViewController {
             followersView.heightAnchor.constraint(equalToConstant: itemHeight),
             
             dateLabel.topAnchor.constraint(equalTo: followersView.bottomAnchor, constant: padding),
-            dateLabel.heightAnchor.constraint(equalToConstant: 18),
+            dateLabel.heightAnchor.constraint(equalToConstant: 36),
         ])
     }
     
@@ -109,19 +101,22 @@ class UserInfoVC: UIViewController {
     }
 }
 
-extension UserInfoVC: UserInfoVCDelegate {
+
+extension UserInfoVC: ProjectsItemVCDelegate {
     func onProjectButtonTapped(user: User) {
         guard let url = URL(string: user.htmlUrl) else {
             presentGMAlertOnMainThread(title: "오류", message: "Github URL에 이상이 있는 것 같습니다. 다시 시도해 주세요.")
             return
         }
-        
+
         presentSafariVC(url: url)
     }
-    
+}
+
+extension UserInfoVC: FollowerItemVCDelegate {
     func onFollowerButtonTapped(user: User) {
         delegate.onRequestFollowers(username: user.login)
-        
+
         dismissViewController()
-    }    
+    }
 }

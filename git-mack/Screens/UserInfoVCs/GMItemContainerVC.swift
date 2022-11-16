@@ -7,10 +7,14 @@
 
 import UIKit
 
+protocol ItemContainerVCDelegate: AnyObject {
+    func onProjectButtonTapped(user: User)
+    func onFollowerButtonTapped(user: User)
+}
+
 class GMItemContainerVC: UIViewController {
     
     var user: User!
-    weak var delegate: UserInfoVCDelegate!
     
     let stackView = UIStackView()
     let leftItemView = GMInfoCountView()

@@ -20,6 +20,7 @@ class CheckoutVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = GMColors.mainNavy
         
+        addSubviews()
         configureUI()
     }
     
@@ -51,6 +52,10 @@ class CheckoutVC: UIViewController {
         createTabToDismissKeyboardGesture()
     }
     
+    func addSubviews() {
+        view.addSubviews(logoImageView, screenTitle, usernameTextField, textFieldBorder, checkoutButton)
+    }
+    
     func createTabToDismissKeyboardGesture() {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         
@@ -58,8 +63,6 @@ class CheckoutVC: UIViewController {
     }
     
     func configureLogoImage() {
-        view.addSubview(logoImageView)
-        
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
         logoImageView.image = GMImages.logo
         
@@ -72,8 +75,6 @@ class CheckoutVC: UIViewController {
     }
     
     func configureScreenTitle() {
-        view.addSubview(screenTitle)
-        
         screenTitle.translatesAutoresizingMaskIntoConstraints = false
         screenTitle.text = "다른 개발자들의\n\"깃맥\"을 찾아보세요"
         screenTitle.numberOfLines = 2
@@ -93,8 +94,6 @@ class CheckoutVC: UIViewController {
     }
     
     func configureTextField() {
-        view.addSubview(usernameTextField)
-        
         usernameTextField.delegate = self
         usernameTextField.backgroundColor = .none
         usernameTextField.layer.cornerRadius = 0
@@ -111,8 +110,6 @@ class CheckoutVC: UIViewController {
     }
     
     func configureTextFieldBorder() {
-        view.addSubview(textFieldBorder)
-        
         textFieldBorder.backgroundColor = .white
         textFieldBorder.translatesAutoresizingMaskIntoConstraints = false
         
@@ -125,8 +122,6 @@ class CheckoutVC: UIViewController {
     }
     
     func configureCheckoutButton() {
-        view.addSubview(checkoutButton)
-        
         checkoutButton.addTarget(self, action: #selector(pushToFollowerListVC), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
