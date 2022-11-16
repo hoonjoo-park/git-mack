@@ -20,18 +20,21 @@ class GMInfoCountView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configure()
+        configureUI()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure() {
-        addSubview(symbolImageView)
-        addSubview(titleLabel)
-        addSubview(countLabel)
-        
+    func configureUI() {
+        addSubviews(symbolImageView, titleLabel, countLabel)
+        configureSymbolImageView()
+        configureTitleLabel()
+        configureCountLabel()
+    }
+    
+    func configureSymbolImageView() {
         symbolImageView.translatesAutoresizingMaskIntoConstraints = false
         symbolImageView.contentMode = .scaleAspectFill
         symbolImageView.tintColor = .white
@@ -41,12 +44,20 @@ class GMInfoCountView: UIView {
             symbolImageView.topAnchor.constraint(equalTo: self.topAnchor),
             symbolImageView.widthAnchor.constraint(equalToConstant: 20),
             symbolImageView.heightAnchor.constraint(equalToConstant: 20),
-            
+        ])
+    }
+    
+    func configureTitleLabel() {
+        NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: symbolImageView.trailingAnchor, constant: 12),
             titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             titleLabel.centerYAnchor.constraint(equalTo: symbolImageView.centerYAnchor),
             titleLabel.heightAnchor.constraint(equalToConstant: 18),
-            
+        ])
+    }
+    
+    func configureCountLabel() {
+        NSLayoutConstraint.activate([
             countLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             countLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             countLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),

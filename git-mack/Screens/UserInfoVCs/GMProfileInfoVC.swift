@@ -35,12 +35,7 @@ class GMProfileInfoVC: UIViewController {
     }
     
     private func addSubviews() {
-        view.addSubview(avatarImageView)
-        view.addSubview(usernameLabel)
-        view.addSubview(nameLabel)
-        view.addSubview(companyImageView)
-        view.addSubview(companyLabel)
-        view.addSubview(bioLabel)
+        view.addSubviews(avatarImageView, usernameLabel, nameLabel, companyImageView, companyLabel, bioLabel)
     }
     
     private func configureUIDataValues() {

@@ -54,8 +54,7 @@ class GMItemContainerVC: UIViewController {
     }
     
     private func configureUI() {
-        view.addSubview(stackView)
-        view.addSubview(itemButton)
+        view.addSubviews(stackView, itemButton)
         
         let padding: CGFloat = 20
         

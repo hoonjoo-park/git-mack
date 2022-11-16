@@ -10,10 +10,11 @@
 		CB0C56852924FDB4008B50CD /* GMTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0C56842924FDB4008B50CD /* GMTabBarController.swift */; };
 		CB0C56872925063B008B50CD /* GMAlertContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0C56862925063B008B50CD /* GMAlertContainerView.swift */; };
 		CB0C568929253F34008B50CD /* GMDataLoadingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0C568829253F34008B50CD /* GMDataLoadingVC.swift */; };
+		CB0C568B29254A3E008B50CD /* UIView+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0C568A29254A3E008B50CD /* UIView+ext.swift */; };
 		CB7074B72922607D0024BCBF /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7074B62922607D0024BCBF /* PersistenceManager.swift */; };
 		CB7074B929227CFE0024BCBF /* StarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7074B829227CFE0024BCBF /* StarCell.swift */; };
 		CB789993291F9A240057F6DE /* GMInfoCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB789992291F9A240057F6DE /* GMInfoCountView.swift */; };
-		CB789997291FB2BE0057F6DE /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB789996291FB2BE0057F6DE /* Date+Ext.swift */; };
+		CB789997291FB2BE0057F6DE /* Date+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB789996291FB2BE0057F6DE /* Date+ext.swift */; };
 		CB8C1D39291E683F00C1A523 /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8C1D38291E683F00C1A523 /* UserInfoVC.swift */; };
 		CB8C7D2E291EC607007D928B /* GMSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8C7D2D291EC607007D928B /* GMSecondaryTitleLabel.swift */; };
 		CB8C7D31291ECC48007D928B /* GMProfileInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8C7D30291ECC48007D928B /* GMProfileInfoVC.swift */; };
@@ -50,10 +51,11 @@
 		CB0C56842924FDB4008B50CD /* GMTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMTabBarController.swift; sourceTree = "<group>"; };
 		CB0C56862925063B008B50CD /* GMAlertContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMAlertContainerView.swift; sourceTree = "<group>"; };
 		CB0C568829253F34008B50CD /* GMDataLoadingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMDataLoadingVC.swift; sourceTree = "<group>"; };
+		CB0C568A29254A3E008B50CD /* UIView+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ext.swift"; sourceTree = "<group>"; };
 		CB7074B62922607D0024BCBF /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		CB7074B829227CFE0024BCBF /* StarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarCell.swift; sourceTree = "<group>"; };
 		CB789992291F9A240057F6DE /* GMInfoCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMInfoCountView.swift; sourceTree = "<group>"; };
-		CB789996291FB2BE0057F6DE /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
+		CB789996291FB2BE0057F6DE /* Date+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+ext.swift"; sourceTree = "<group>"; };
 		CB8C1D38291E683F00C1A523 /* UserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
 		CB8C7D2D291EC607007D928B /* GMSecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMSecondaryTitleLabel.swift; sourceTree = "<group>"; };
 		CB8C7D30291ECC48007D928B /* GMProfileInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMProfileInfoVC.swift; sourceTree = "<group>"; };
@@ -195,7 +197,8 @@
 				CBA36E8429103D7400E86520 /* UIColor+ext.swift */,
 				CBCAFB2E2915815D00BBA8D0 /* UITextField-ext.swift */,
 				CBE213282917B35700801A77 /* UIViewController+ext.swift */,
-				CB789996291FB2BE0057F6DE /* Date+Ext.swift */,
+				CB789996291FB2BE0057F6DE /* Date+ext.swift */,
+				CB0C568A29254A3E008B50CD /* UIView+ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -313,7 +316,7 @@
 				CB8C7D33291ED399007D928B /* Constants.swift in Sources */,
 				CBCAFB3129159DEF00BBA8D0 /* FollowerListVC.swift in Sources */,
 				CB0C568929253F34008B50CD /* GMDataLoadingVC.swift in Sources */,
-				CB789997291FB2BE0057F6DE /* Date+Ext.swift in Sources */,
+				CB789997291FB2BE0057F6DE /* Date+ext.swift in Sources */,
 				CBE2132C2917C7BD00801A77 /* Follower.swift in Sources */,
 				CBCAFB2929154F2200BBA8D0 /* GMTextField.swift in Sources */,
 				CB8C7D37291ED76D007D928B /* GMProjectsItemVC.swift in Sources */,
@@ -334,6 +337,7 @@
 				CB7074B72922607D0024BCBF /* PersistenceManager.swift in Sources */,
 				CB8C1D39291E683F00C1A523 /* UserInfoVC.swift in Sources */,
 				CB8C7D2E291EC607007D928B /* GMSecondaryTitleLabel.swift in Sources */,
+				CB0C568B29254A3E008B50CD /* UIView+ext.swift in Sources */,
 				CB0C56852924FDB4008B50CD /* GMTabBarController.swift in Sources */,
 				CB789993291F9A240057F6DE /* GMInfoCountView.swift in Sources */,
 				CB984880291951D50063141F /* FollowerCell.swift in Sources */,
