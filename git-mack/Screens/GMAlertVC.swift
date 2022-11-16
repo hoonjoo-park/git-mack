@@ -10,7 +10,7 @@ import UIKit
 class GMAlertVC: UIViewController {
     let padding:CGFloat = 20
     
-    let alertModal:UIView = UIView()
+    let alertModal:UIView = GMAlertContainerView()
     let titleLabel:UILabel = GMTitleLabel(fontSize: 18, textAlign: .center, color: .white)
     let bodyLabel:UILabel = GMBodyLabel(textAlign: .center)
     let confirmButton:UIButton = GMButton(backgroundColor: GMColors.blue, title: "Approve!", titleColor: .white)
@@ -31,7 +31,7 @@ class GMAlertVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7)
+        view.backgroundColor = .black.withAlphaComponent(0.7)
         
         configureUI()
     }
@@ -46,24 +46,16 @@ class GMAlertVC: UIViewController {
     func configureAlertModal() {
         view.addSubview(alertModal)
         
-        alertModal.translatesAutoresizingMaskIntoConstraints = false
-        alertModal.layer.cornerRadius = 15
-        alertModal.backgroundColor = GMColors.subNavy
-        
         NSLayoutConstraint.activate([
             alertModal.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             alertModal.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            alertModal.widthAnchor.constraint(equalToConstant: 290),
-            alertModal.heightAnchor.constraint(equalToConstant: 200),
         ])
-        
     }
     
     func configureAlertTitle() {
         view.addSubview(titleLabel)
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        
         titleLabel.text = alertTitle ?? "알 수 없는 오류가 발생했습니다"
         
         NSLayoutConstraint.activate([
@@ -72,7 +64,6 @@ class GMAlertVC: UIViewController {
             titleLabel.trailingAnchor.constraint(equalTo: alertModal.trailingAnchor, constant: -padding),
             titleLabel.heightAnchor.constraint(equalToConstant: 30),
         ])
-        
     }
     
     func configureConfirmButton() {
@@ -103,7 +94,6 @@ class GMAlertVC: UIViewController {
             bodyLabel.leadingAnchor.constraint(equalTo: alertModal.leadingAnchor, constant: padding),
             bodyLabel.trailingAnchor.constraint(equalTo: alertModal.trailingAnchor, constant: -padding),
         ])
-        
     }
     
     @objc func dismissGMAlertVC() {

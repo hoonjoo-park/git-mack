@@ -11,7 +11,7 @@ class StarCell: UITableViewCell {
     
     static let reuseID = "StarCell"
     let avatarImageView = GMAvatarImageView(frame: .zero)
-    let usernameLabel = GMTitleLabel(fontSize: 26, textAlign: .left, color: .white)
+    let usernameLabel = GMTitleLabel(fontSize: 21, textAlign: .left, color: .white)
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -24,7 +24,11 @@ class StarCell: UITableViewCell {
     
     func set(user: Follower) {
         usernameLabel.text = user.login
-        avatarImageView.downloadImage(imageUrl: user.avatarUrl)
+        
+        NetworkManager.shared.downloadImage(imageUrl: user.avatarUrl) { [weak self] image in
+            guard let self = self else { return }
+            DispatchQueue.main.async { self.avatarImageView.image = image }
+        }
     }
     
     private func configure() {

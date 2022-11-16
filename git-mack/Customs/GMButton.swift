@@ -14,8 +14,8 @@ class GMButton: UIButton {
         configure()
     }
     
-    init(backgroundColor: UIColor, title: String, titleColor: UIColor) {
-        super.init(frame: .zero)
+    convenience init(backgroundColor: UIColor, title: String, titleColor: UIColor) {
+        self.init(frame: .zero)
         
         self.backgroundColor = backgroundColor
         self.setTitle(title, for: .normal)

@@ -79,10 +79,7 @@ extension StarsVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let star = stars[indexPath.row]
-        let destVC = FollowerListVC()
-        
-        destVC.username = star.login
-        destVC.title = star.login
+        let destVC = FollowerListVC(username: star.login)
         
         navigationController?.pushViewController(destVC, animated: true)
     }

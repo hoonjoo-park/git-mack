@@ -18,8 +18,8 @@ class GMSecondaryTitleLabel: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(fontSize: CGFloat, color: UIColor) {
-        super.init(frame: .zero)
+    convenience init(fontSize: CGFloat, color: UIColor) {
+        self.init(frame: .zero)
         
         font = UIFont.systemFont(ofSize: fontSize, weight: .medium)
         textColor = color

@@ -18,36 +18,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = createTabBar()
+        window?.rootViewController = GMTabBarController()
         window?.makeKeyAndVisible()
-    }
-    
-    func createSearchNC() -> UINavigationController {
-        let checkoutVC = CheckoutVC()
-        
-        checkoutVC.tabBarItem = UITabBarItem(title: "Checkout", image: UIImage(systemName: "magnifyingglass"), tag: 0)
-        
-        return UINavigationController(rootViewController: checkoutVC)
-    }
-    
-    func createFavoritesNC() -> UINavigationController {
-        let starsVC = StarsVC()
-        
-        starsVC.tabBarItem = UITabBarItem(title: "Stars", image: UIImage(systemName: "star"), tag: 1)
-        
-        return UINavigationController(rootViewController: starsVC)
-    }
-    
-    func createTabBar() -> UITabBarController {
-        let tabBar = UITabBarController()
-        
-        UITabBar.appearance().tintColor = GMColors.yellow
-        UITabBar.appearance().unselectedItemTintColor = UIColor(r: 164, g: 168, b: 175)
-        UITabBar.appearance().backgroundColor = GMColors.subNavy
-        
-        tabBar.viewControllers = [createSearchNC(), createFavoritesNC()]
-        
-        return tabBar
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

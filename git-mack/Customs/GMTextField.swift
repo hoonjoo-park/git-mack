@@ -13,12 +13,9 @@ class GMTextField: UITextField {
         configure()
     }
     
-    init(placeholder: String) {
-        super.init(frame: .zero)
-        
+    convenience init(placeholder: String) {
+        self.init(frame: .zero)
         self.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemGray])
-        
-        configure()
     }
     
     required init?(coder: NSCoder) {
@@ -36,6 +33,7 @@ class GMTextField: UITextField {
         font = UIFont.preferredFont(forTextStyle: .headline)
         adjustsFontSizeToFitWidth = true
         minimumFontSize = 12
+        clearButtonMode = .whileEditing
         returnKeyType = .go
         autocapitalizationType = .none
         

@@ -11,7 +11,7 @@ protocol FollowerListVCDelegate: AnyObject {
     func onRequestFollowers(username: String)
 }
 
-class FollowerListVC: UIViewController {
+class FollowerListVC: GMDataLoadingVC {
     
     enum Section { case main }
     
@@ -24,7 +24,18 @@ class FollowerListVC: UIViewController {
     
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
-
+    
+    init(username: String) {
+        super.init(nibName: nil, bundle: nil)
+        
+        self.username = username
+        self.title = username
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureDefault()
@@ -132,7 +143,6 @@ class FollowerListVC: UIViewController {
         let searchController = UISearchController()
         
         searchController.searchResultsUpdater = self
-        searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "유저 아이디를 입력해 필터링해보세요"
         
         navigationItem.searchController = searchController
@@ -170,11 +180,9 @@ extension FollowerListVC: UICollectionViewDelegate {
     }
 }
 
-extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
+extension FollowerListVC: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        guard let text = searchController.searchBar.text else { return }
-        
-        if text.isEmpty {
+        guard let text = searchController.searchBar.text, !text.isEmpty else {
             updateData(followers: followers)
             filteredFollowers.removeAll()
             return
@@ -182,11 +190,6 @@ extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
         
         filteredFollowers = followers.filter { $0.login.lowercased().contains(text.lowercased()) }
         updateData(followers: filteredFollowers)
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        updateData(followers: followers)
-        filteredFollowers.removeAll()
     }
 }
 

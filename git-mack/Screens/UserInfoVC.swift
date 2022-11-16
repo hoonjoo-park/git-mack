@@ -61,7 +61,7 @@ class UserInfoVC: UIViewController {
         self.add(childVC: GMProfileInfoVC(user: user), containerView: self.profileInfoView)
         self.add(childVC: projectsItemVC, containerView: self.projectsView)
         self.add(childVC: followerItemVC, containerView: self.followersView)
-        self.dateLabel.text = "Github 가입: \(user.createdAt.toDate())"
+        self.dateLabel.text = "Github 가입: \(user.createdAt.toYearMonthDate())"
     }
     
     private func configureUI() {
@@ -116,8 +116,7 @@ extension UserInfoVC: UserInfoVCDelegate {
             return
         }
         
-        let safariVC = SFSafariViewController(url: url)
-        present(safariVC, animated: true)
+        presentSafariVC(url: url)
     }
     
     func onFollowerButtonTapped(user: User) {

@@ -25,7 +25,7 @@ class CheckoutVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        usernameTextField.text = ""
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
@@ -35,10 +35,9 @@ class CheckoutVC: UIViewController {
             return
         }
         
-        let followerListVC = FollowerListVC()
+        usernameTextField.resignFirstResponder()
         
-        followerListVC.username = usernameTextField.text
-        followerListVC.title = usernameTextField.text
+        let followerListVC = FollowerListVC(username: usernameTextField.text!)
         
         navigationController?.pushViewController(followerListVC, animated: true)
     }
@@ -62,7 +61,7 @@ class CheckoutVC: UIViewController {
         view.addSubview(logoImageView)
         
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
-        logoImageView.image = UIImage(named: "gitmack-logo")
+        logoImageView.image = GMImages.logo
         
         NSLayoutConstraint.activate([
             logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 70),
@@ -108,6 +107,7 @@ class CheckoutVC: UIViewController {
         ])
         
         usernameTextField.addLeftPadding(width: 10)
+        usernameTextField.addRightPadding(width: 10)
     }
     
     func configureTextFieldBorder() {

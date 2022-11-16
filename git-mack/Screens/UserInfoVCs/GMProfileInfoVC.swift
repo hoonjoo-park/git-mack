@@ -44,7 +44,8 @@ class GMProfileInfoVC: UIViewController {
     }
     
     private func configureUIDataValues() {
-        avatarImageView.downloadImage(imageUrl: user.avatarUrl)
+        configureImage()
+        
         usernameLabel.text = user.login
         nameLabel.text = user.name ?? "이름 미등록"
         companyLabel.text = user.company ?? "직장 미등록"
@@ -54,6 +55,13 @@ class GMProfileInfoVC: UIViewController {
         companyImageView.image = UIImage(systemName: SFSymbols.company)
         companyImageView.tintColor = .white
         companyImageView.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private func configureImage() {
+        NetworkManager.shared.downloadImage(imageUrl: user.avatarUrl) { [weak self] image in
+            guard let self = self else { return }
+            DispatchQueue.main.async { self.avatarImageView.image = image }
+        }
     }
     
     private func configureUI() {

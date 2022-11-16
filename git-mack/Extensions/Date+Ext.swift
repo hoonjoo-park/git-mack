@@ -8,7 +8,7 @@
 import Foundation
 
 extension Date {
-    func convertToString() -> String {
+    func toYearMonthDate() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY년 MM월 dd일"
         

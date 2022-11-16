@@ -13,25 +13,35 @@ class GMNotFoundView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configure()
+        configureImageView()
+        configureMeesageLabel()
     }
     
-    init(message: String) {
-        super.init(frame: .zero)
+    convenience init(message: String) {
+        self.init(frame: .zero)
         messageLabel.text = message
-        configure()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func configure() {
+    private func configureImageView() {
         addSubview(notFoundImageView)
-        addSubview(messageLabel)
         
-        notFoundImageView.image = UIImage(named: "github-square-3d")
+        notFoundImageView.image = GMImages.square3D
         notFoundImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            notFoundImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -120),
+            notFoundImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            notFoundImageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5),
+            notFoundImageView.heightAnchor.constraint(equalTo: notFoundImageView.widthAnchor),
+        ])
+    }
+    
+    private func configureMeesageLabel() {
+        addSubview(messageLabel)
         
         messageLabel.numberOfLines = 3
         
@@ -40,11 +50,6 @@ class GMNotFoundView: UIView {
             messageLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40),
             messageLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -150),
             messageLabel.heightAnchor.constraint(equalToConstant: 150),
-            
-            notFoundImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -120),
-            notFoundImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            notFoundImageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5),
-            notFoundImageView.heightAnchor.constraint(equalTo: notFoundImageView.widthAnchor),
         ])
     }
 
