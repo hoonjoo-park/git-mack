@@ -16,19 +16,24 @@ class CheckoutVC: UIViewController {
     
     var isUsernameEmpty: Bool { return usernameTextField.text!.isEmpty }
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = GMColors.mainNavy
         
         addSubviews()
         configureUI()
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         usernameTextField.text = ""
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
+    
     
     @objc func pushToFollowerListVC() {
         guard !isUsernameEmpty else {
@@ -43,6 +48,7 @@ class CheckoutVC: UIViewController {
         navigationController?.pushViewController(followerListVC, animated: true)
     }
     
+    
     func configureUI() {
         configureLogoImage()
         configureScreenTitle()
@@ -52,15 +58,18 @@ class CheckoutVC: UIViewController {
         createTabToDismissKeyboardGesture()
     }
     
+    
     func addSubviews() {
         view.addSubviews(logoImageView, screenTitle, usernameTextField, textFieldBorder, checkoutButton)
     }
+    
     
     func createTabToDismissKeyboardGesture() {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         
         view.addGestureRecognizer(tap)
     }
+    
     
     func configureLogoImage() {
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -74,6 +83,7 @@ class CheckoutVC: UIViewController {
         ])
     }
     
+    
     func configureScreenTitle() {
         screenTitle.translatesAutoresizingMaskIntoConstraints = false
         screenTitle.text = "다른 개발자들의\n\"깃맥\"을 찾아보세요"
@@ -86,12 +96,18 @@ class CheckoutVC: UIViewController {
             screenTitle.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 100),
         ])
         
+        highlightSpecificWord(word: "\"깃맥\"")
+    }
+    
+    
+    func highlightSpecificWord(word: String) {
         let fullText = screenTitle.text ?? ""
         let attribtuedString = NSMutableAttributedString(string: fullText)
-        let range = (fullText as NSString).range(of: "\"깃맥\"")
+        let range = (fullText as NSString).range(of: word)
         attribtuedString.addAttribute(.foregroundColor, value: UIColor(r: 255, g: 213, b: 0), range: range)
         screenTitle.attributedText = attribtuedString
     }
+    
     
     func configureTextField() {
         usernameTextField.delegate = self
@@ -109,6 +125,7 @@ class CheckoutVC: UIViewController {
         usernameTextField.addRightPadding(width: 10)
     }
     
+    
     func configureTextFieldBorder() {
         textFieldBorder.backgroundColor = .white
         textFieldBorder.translatesAutoresizingMaskIntoConstraints = false
@@ -120,6 +137,7 @@ class CheckoutVC: UIViewController {
             textFieldBorder.heightAnchor.constraint(equalToConstant: 2),
         ])
     }
+    
     
     func configureCheckoutButton() {
         checkoutButton.addTarget(self, action: #selector(pushToFollowerListVC), for: .touchUpInside)
@@ -133,6 +151,7 @@ class CheckoutVC: UIViewController {
         ])
     }
 }
+
 
 extension CheckoutVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

@@ -11,12 +11,11 @@ enum PersistenceActionType {
     case add, remove
 }
 
+
 enum PersistenceManager {
-    static private let defaults = UserDefaults.standard
     
-    enum Keys {
-        static let stars = "Stars"
-    }
+    static private let defaults = UserDefaults.standard
+    enum Keys { static let stars = "Stars" }
     
     static func updateStars(user: Follower, action: PersistenceActionType, completion: @escaping (GMErrorMessage?) -> Void ) {
         retrieveStars { result in

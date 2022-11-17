@@ -69,7 +69,6 @@ class GMAlertVC: UIViewController {
     
     func configureConfirmButton() {
         confirmButton.addTarget(self, action: #selector(dismissGMAlertVC), for: .touchUpInside)
-        
         confirmButton.translatesAutoresizingMaskIntoConstraints = false
         confirmButton.layer.cornerRadius = 8
         

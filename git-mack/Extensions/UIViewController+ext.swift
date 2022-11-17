@@ -20,11 +20,13 @@ extension UIViewController {
         }
     }
     
+    
     func showNotFoundView(message: String, view: UIView) {
         let notFoundView = GMNotFoundView(message: message)
         notFoundView.frame = view.bounds
         view.addSubview(notFoundView)
     }
+    
     
     func presentSafariVC(url: URL) {
         let safariVC = SFSafariViewController(url: url)

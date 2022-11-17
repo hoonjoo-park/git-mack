@@ -35,6 +35,7 @@ class FollowerListVC: GMDataLoadingVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configureDefault()
         configureCollectionView()
         fetchFollowers(username: username, page: page)
@@ -42,10 +43,13 @@ class FollowerListVC: GMDataLoadingVC {
         configureSearchBar()
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
+    
     
     func fetchFollowers(username: String, page: Int) {
         showLoadingView()
@@ -58,17 +62,7 @@ class FollowerListVC: GMDataLoadingVC {
             
             switch result {
             case .success(let followers):
-                if followers.count < 50 { self.hasMoreData = false }
-                
-                self.followers.append(contentsOf: followers)
-                self.updateData(followers: self.followers)
-                
-                if followers.isEmpty {
-                    let message = "해당 사용자를 아무도 팔로우 하고 있지 않습니다 🤔"
-                    DispatchQueue.main.async {
-                        self.showNotFoundView(message: message, view: self.view)
-                    }
-                }
+                self.appendFollowers(followers: followers)
                 
             case .failure(let error):
                 self.presentGMAlertOnMainThread(title: "오류", message: error.rawValue)
@@ -79,6 +73,21 @@ class FollowerListVC: GMDataLoadingVC {
         
     }
     
+    
+    func appendFollowers(followers: [Follower]) {
+        if followers.count < 50 { self.hasMoreData = false }
+        
+        self.followers.append(contentsOf: followers)
+        self.updateData(followers: self.followers)
+        
+        if followers.isEmpty {
+            let message = "해당 사용자를 아무도 팔로우 하고 있지 않습니다 🤔"
+            
+            DispatchQueue.main.async { self.showNotFoundView(message: message, view: self.view) }
+        }
+    }
+    
+    
     func updateData(followers: [Follower]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Follower>()
         snapshot.appendSections([.main])
@@ -87,14 +96,15 @@ class FollowerListVC: GMDataLoadingVC {
     }
     
     
-    
     func configureDefault() {
         view.backgroundColor = GMColors.mainNavy
         
         let rightButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addStar))
+        
         navigationItem.rightBarButtonItem = rightButton
         navigationController?.navigationBar.prefersLargeTitles = true
     }
+    
     
     @objc func addStar() {
         showLoadingView()
@@ -105,17 +115,7 @@ class FollowerListVC: GMDataLoadingVC {
             
             switch result {
             case .success(let user):
-                let favorite = Follower(id: user.id, login: user.login, avatarUrl: user.avatarUrl)
-                
-                PersistenceManager.updateStars(user: favorite, action: .add) { [weak self] error in
-                    guard let self = self else { return }
-                    
-                    guard let error = error else {
-                        self.presentGMAlertOnMainThread(title: "성공", message: "상대방을 나의 즐겨찾기에 추가했습니다 🥳")
-                        return
-                    }
-                    self.presentGMAlertOnMainThread(title: "오류 ", message: error.rawValue)
-                }
+                self.addUserToStars(user: user)
                 
             case .failure(let error):
                 self.presentGMAlertOnMainThread(title: "오류 ", message: error.rawValue)
@@ -123,6 +123,22 @@ class FollowerListVC: GMDataLoadingVC {
         }
             
     }
+    
+    func addUserToStars(user: User) {
+        let favorite = Follower(id: user.id, login: user.login, avatarUrl: user.avatarUrl)
+        
+        PersistenceManager.updateStars(user: favorite, action: .add) { [weak self] error in
+            guard let self = self else { return }
+            
+            guard let error = error else {
+                self.presentGMAlertOnMainThread(title: "성공", message: "상대방을 나의 즐겨찾기에 추가했습니다 🥳")
+                return
+            }
+            
+            self.presentGMAlertOnMainThread(title: "오류 ", message: error.rawValue)
+        }
+    }
+    
     
     func configureCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createThreeColumnFlowLayout(view: view))
@@ -132,13 +148,16 @@ class FollowerListVC: GMDataLoadingVC {
         collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.reuseID)
     }
     
+    
     func configureDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, Follower>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, follower) -> UICollectionViewCell? in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.reuseID, for: indexPath) as! FollowerCell
             cell.setCell(follower: follower)
+            
             return cell
         })
     }
+    
     
     func configureSearchBar() {
         let searchController = UISearchController()
@@ -167,6 +186,7 @@ extension FollowerListVC: UICollectionViewDelegate {
         }
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let follwersArray = filteredFollowers.isEmpty ? followers : filteredFollowers
         let follower = follwersArray[indexPath.item]
@@ -186,6 +206,7 @@ extension FollowerListVC: UISearchResultsUpdating {
         guard let text = searchController.searchBar.text, !text.isEmpty else {
             updateData(followers: followers)
             filteredFollowers.removeAll()
+            
             return
         }
         

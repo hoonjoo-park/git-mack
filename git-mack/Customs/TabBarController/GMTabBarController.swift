@@ -19,6 +19,7 @@ class GMTabBarController: UITabBarController {
         viewControllers = [createSearchNC(), createFavoritesNC()]
     }
     
+    
     func createSearchNC() -> UINavigationController {
         let checkoutVC = CheckoutVC()
         
@@ -26,6 +27,7 @@ class GMTabBarController: UITabBarController {
         
         return UINavigationController(rootViewController: checkoutVC)
     }
+    
     
     func createFavoritesNC() -> UINavigationController {
         let starsVC = StarsVC()

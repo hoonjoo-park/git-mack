@@ -13,6 +13,8 @@ protocol UserInfoVCDelegate: AnyObject {
 
 class UserInfoVC: UIViewController {
     
+    let scrollView = UIScrollView()
+    let contentView = UIView()
     let profileInfoView = UIView()
     let projectsView = UIView()
     let followersView = UIView()
@@ -30,6 +32,7 @@ class UserInfoVC: UIViewController {
         fetchUserInfo()
     }
     
+    
     private func fetchUserInfo() {
         NetworkManager.shared.fetchUser(for: username) { [weak self] result in
             guard let self = self else { return }
@@ -43,11 +46,27 @@ class UserInfoVC: UIViewController {
         }
     }
     
+    
     private func configureViewController() {
         view.backgroundColor = GMColors.mainNavy
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissViewController))
         navigationItem.rightBarButtonItem = doneButton
     }
+    
+    
+    private func configureScrollView() {
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        
+        scrollView.pinToEdges(of: view)
+        contentView.pinToEdges(of: scrollView)
+        
+        NSLayoutConstraint.activate([
+            contentView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            contentView.heightAnchor.constraint(equalToConstant: 600),
+        ])
+    }
+    
     
     private func configureUIElements(user: User) {    
         self.add(childVC: GMProfileInfoVC(user: user), containerView: self.profileInfoView)
@@ -55,6 +74,7 @@ class UserInfoVC: UIViewController {
         self.add(childVC: GMFollowerItemVC(user: user, delegate: self), containerView: self.followersView)
         self.dateLabel.text = "Github 가입: \(user.createdAt.toYearMonthDate())"
     }
+    
     
     private func configureUI() {
         let padding: CGFloat = 20
@@ -89,12 +109,14 @@ class UserInfoVC: UIViewController {
         ])
     }
     
+    
     func add(childVC: UIViewController, containerView: UIView) {
         addChild(childVC)
         containerView.addSubview(childVC.view)
         childVC.view.frame = containerView.bounds
         childVC.didMove(toParent: self)
     }
+    
     
     @objc func dismissViewController() {
         dismiss(animated: true)
