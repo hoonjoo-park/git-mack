@@ -56,7 +56,7 @@ class FollowerListVC: GMDataLoadingVC {
         isFetching = true
         
         NetworkManager.shared.fetchFollowers(for: username, page: page) { [weak self] result in
-            guard let self = self else { return }
+            guard let self else { return }
             
             self.hideLoadingView()
             
@@ -110,7 +110,7 @@ class FollowerListVC: GMDataLoadingVC {
         showLoadingView()
         
         NetworkManager.shared.fetchUser(for: username) { [weak self] result in
-            guard let self = self else { return }
+            guard let self else { return }
             self.hideLoadingView()
             
             switch result {
@@ -128,9 +128,9 @@ class FollowerListVC: GMDataLoadingVC {
         let favorite = Follower(id: user.id, login: user.login, avatarUrl: user.avatarUrl)
         
         PersistenceManager.updateStars(user: favorite, action: .add) { [weak self] error in
-            guard let self = self else { return }
+            guard let self else { return }
             
-            guard let error = error else {
+            guard let error else {
                 self.presentGMAlertOnMainThread(title: "성공", message: "상대방을 나의 즐겨찾기에 추가했습니다 🥳")
                 return
             }
