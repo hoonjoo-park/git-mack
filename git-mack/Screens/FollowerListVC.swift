@@ -180,7 +180,7 @@ extension FollowerListVC: UICollectionViewDelegate {
         let containerHeight = scrollView.frame.size.height
         
         if offsetY + containerHeight + 50 >= scrollHeight {
-            guard hasMoreData, !isFetching else { return }
+            guard hasMoreData, !isFetching, filteredFollowers.isEmpty else { return }
             
             page += 1
             fetchFollowers(username: username, page: page)
