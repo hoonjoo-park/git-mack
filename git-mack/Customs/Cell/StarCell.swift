@@ -25,13 +25,14 @@ class StarCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        avatarImageView.image = UIImage(named: "place-holder")
+    }
+    
     func set(user: Follower) {
         usernameLabel.text = user.login
-        
-        NetworkManager.shared.downloadImage(imageUrl: user.avatarUrl) { [weak self] image in
-            guard let self else { return }
-            DispatchQueue.main.async { self.avatarImageView.image = image }
-        }
+        avatarImageView.downloadImage(url: user.avatarUrl)
     }
     
     func configureUI() {

@@ -28,20 +28,23 @@ class UserInfoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
+        configureScrollView()
         configureUI()
         fetchUserInfo()
     }
     
     
     private func fetchUserInfo() {
-        NetworkManager.shared.fetchUser(for: username) { [weak self] result in
-            guard let self else { return }
-            
-            switch result {
-            case .success(let user):
-                DispatchQueue.main.async { self.configureUIElements(user: user) }
-            case .failure(let error):
-                self.presentGMAlertOnMainThread(title: "오류", message: error.rawValue)
+        Task {
+            do {
+                let user = try await NetworkManager.shared.fetchUser(for: username)
+                configureUIElements(user: user)
+            } catch {
+                if let error = error as? GMErrorMessage {
+                    presentGMAlert(title: "오류", message: error.rawValue)
+                } else {
+                    presentGMAlert(title: "오류", message: "알 수 없는 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.")
+                }
             }
         }
     }
@@ -127,7 +130,7 @@ class UserInfoVC: UIViewController {
 extension UserInfoVC: ProjectsItemVCDelegate {
     func onProjectButtonTapped(user: User) {
         guard let url = URL(string: user.htmlUrl) else {
-            presentGMAlertOnMainThread(title: "오류", message: "Github URL에 이상이 있는 것 같습니다. 다시 시도해 주세요.")
+            presentGMAlert(title: "오류", message: "Github URL에 이상이 있는 것 같습니다. 다시 시도해 주세요.")
             return
         }
 

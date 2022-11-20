@@ -55,22 +55,21 @@ class FollowerListVC: GMDataLoadingVC {
         showLoadingView()
         isFetching = true
         
-        NetworkManager.shared.fetchFollowers(for: username, page: page) { [weak self] result in
-            guard let self else { return }
-            
-            self.hideLoadingView()
-            
-            switch result {
-            case .success(let followers):
-                self.appendFollowers(followers: followers)
-                
-            case .failure(let error):
-                self.presentGMAlertOnMainThread(title: "오류", message: error.rawValue)
+        Task {
+            do {
+                let followers = try await NetworkManager.shared.fetchFollowers(for: username, page: page)
+                appendFollowers(followers: followers)
+            } catch {
+                if let error = error as? GMErrorMessage {
+                    self.presentGMAlert(title: "오류", message: error.rawValue)
+                } else {
+                    self.presentGMAlert(title: "오류", message: "알 수 없는 오류가 발생했습니다. 다시 잠시 후 시도해 주세요.")
+                }
             }
         }
         
+        hideLoadingView()
         isFetching = false
-        
     }
     
     
@@ -109,18 +108,20 @@ class FollowerListVC: GMDataLoadingVC {
     @objc func addStar() {
         showLoadingView()
         
-        NetworkManager.shared.fetchUser(for: username) { [weak self] result in
-            guard let self else { return }
-            self.hideLoadingView()
-            
-            switch result {
-            case .success(let user):
-                self.addUserToStars(user: user)
-                
-            case .failure(let error):
-                self.presentGMAlertOnMainThread(title: "오류 ", message: error.rawValue)
+        Task {
+            do {
+                let user = try await NetworkManager.shared.fetchUser(for: username)
+                addUserToStars(user: user)
+            } catch {
+                if let error = error as? GMErrorMessage {
+                    presentGMAlert(title: "오류", message: error.rawValue)
+                } else {
+                    presentGMAlert(title: "오류", message: "알 수 없는 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.")
+                }
             }
         }
+        
+        hideLoadingView()
             
     }
     
@@ -131,11 +132,11 @@ class FollowerListVC: GMDataLoadingVC {
             guard let self else { return }
             
             guard let error else {
-                self.presentGMAlertOnMainThread(title: "성공", message: "상대방을 나의 즐겨찾기에 추가했습니다 🥳")
+                self.presentGMAlert(title: "성공", message: "상대방을 나의 즐겨찾기에 추가했습니다 🥳")
                 return
             }
             
-            self.presentGMAlertOnMainThread(title: "오류 ", message: error.rawValue)
+            self.presentGMAlert(title: "오류 ", message: error.rawValue)
         }
     }
     
@@ -188,7 +189,7 @@ extension FollowerListVC: UICollectionViewDelegate {
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let follwersArray = filteredFollowers.isEmpty ? followers : filteredFollowers
+        let follwersArray = isSearching ? filteredFollowers : followers
         let follower = follwersArray[indexPath.item]
         
         let userInfoVC = UserInfoVC()

@@ -9,15 +9,12 @@ import UIKit
 import SafariServices
 
 extension UIViewController {
-    func presentGMAlertOnMainThread(title: String, message: String) {
-        DispatchQueue.main.async {
-            let alertVC = GMAlertVC(title: title, message: message)
-            
-            alertVC.modalTransitionStyle = .crossDissolve
-            alertVC.modalPresentationStyle = .overFullScreen
-            
-            self.present(alertVC, animated: true)
-        }
+    func presentGMAlert(title: String, message: String) {
+        let alertVC = GMAlertVC(title: title, message: message)
+        alertVC.modalTransitionStyle = .crossDissolve
+        alertVC.modalPresentationStyle = .overFullScreen
+        
+        present(alertVC, animated: true)
     }
     
     

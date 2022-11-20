@@ -59,7 +59,7 @@ class StarsVC: GMDataLoadingVC {
                 self.appendStars(stars: stars)
             
             case .failure(let error):
-                self.presentGMAlertOnMainThread(title: "오류", message: error.rawValue)
+                self.presentGMAlert(title: "오류", message: error.rawValue)
             }
         }
         
@@ -113,7 +113,7 @@ extension StarsVC: UITableViewDataSource, UITableViewDelegate {
                 return
             }
             
-            self.presentGMAlertOnMainThread(title: "오류", message: error.rawValue)
+            self.presentGMAlert(title: "오류", message: error.rawValue)
         }
     }
 }
