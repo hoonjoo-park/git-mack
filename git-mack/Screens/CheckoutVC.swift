@@ -10,10 +10,10 @@ import UIKit
 class CheckoutVC: UIViewController {
     let stackView = UIStackView()
     let logoImageView: UIImageView = UIImageView()
-    let checkoutButton: UIButton = GMButton(backgroundColor: UIColor(r: 255, g: 213, b: 0), title: "Checkout!", titleColor: .black)
+    let screenTitle: UILabel = UILabel()
     let usernameTextField: UITextField = GMTextField(placeholder: "깃헙 아이디를 입력하세요")
     let textFieldBorder: UIView = UIView(frame: .zero)
-    let screenTitle: UILabel = UILabel()
+    let checkoutButton: UIButton = GMButton(backgroundColor: UIColor(r: 255, g: 213, b: 0), title: "Checkout!", titleColor: .black)
     
     var isUsernameEmpty: Bool { return usernameTextField.text!.isEmpty }
 
