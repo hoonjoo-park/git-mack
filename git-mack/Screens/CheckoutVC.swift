@@ -8,6 +8,7 @@
 import UIKit
 
 class CheckoutVC: UIViewController {
+    let stackView = UIStackView()
     let logoImageView: UIImageView = UIImageView()
     let checkoutButton: UIButton = GMButton(backgroundColor: UIColor(r: 255, g: 213, b: 0), title: "Checkout!", titleColor: .black)
     let usernameTextField: UITextField = GMTextField(placeholder: "깃헙 아이디를 입력하세요")
@@ -21,9 +22,8 @@ class CheckoutVC: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = GMColors.mainNavy
-        
-        addSubviews()
-        configureUI()
+        configureStackView()
+        configureUIElements()
     }
     
     
@@ -44,12 +44,11 @@ class CheckoutVC: UIViewController {
         usernameTextField.resignFirstResponder()
         
         let followerListVC = FollowerListVC(username: usernameTextField.text!)
-        
         navigationController?.pushViewController(followerListVC, animated: true)
     }
     
     
-    func configureUI() {
+    func configureUIElements() {
         configureLogoImage()
         configureScreenTitle()
         configureTextField()
@@ -58,15 +57,31 @@ class CheckoutVC: UIViewController {
         createTabToDismissKeyboardGesture()
     }
     
-    
-    func addSubviews() {
-        view.addSubviews(logoImageView, screenTitle, usernameTextField, textFieldBorder, checkoutButton)
+    private func configureStackView() {
+        view.addSubview(stackView)
+        
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        stackView.distribution = .equalCentering
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        stackView.addArrangedSubview(logoImageView)
+        stackView.addArrangedSubview(screenTitle)
+        stackView.addArrangedSubview(usernameTextField)
+        stackView.addArrangedSubview(textFieldBorder)
+        stackView.addArrangedSubview(checkoutButton)
+        
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            stackView.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor, constant: -100),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+        ])
     }
     
     
     func createTabToDismissKeyboardGesture() {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
-        
         view.addGestureRecognizer(tap)
     }
     
@@ -76,8 +91,8 @@ class CheckoutVC: UIViewController {
         logoImageView.image = GMImages.logo
         
         NSLayoutConstraint.activate([
-            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 70),
-            logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            logoImageView.topAnchor.constraint(equalTo: stackView.topAnchor, constant: 70),
+            logoImageView.centerXAnchor.constraint(equalTo: stackView.centerXAnchor),
             logoImageView.widthAnchor.constraint(equalToConstant: 120),
             logoImageView.heightAnchor.constraint(equalToConstant: 120),
         ])
@@ -92,8 +107,8 @@ class CheckoutVC: UIViewController {
         screenTitle.font = UIFont.systemFont(ofSize: 28, weight: .black)
         
         NSLayoutConstraint.activate([
-            screenTitle.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30),
-            screenTitle.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 100),
+            screenTitle.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
+            screenTitle.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 50),
         ])
         
         highlightSpecificWord(word: "\"깃맥\"")
@@ -115,9 +130,9 @@ class CheckoutVC: UIViewController {
         usernameTextField.layer.cornerRadius = 0
         
         NSLayoutConstraint.activate([
-            usernameTextField.topAnchor.constraint(equalTo: screenTitle.bottomAnchor, constant: 60),
-            usernameTextField.leftAnchor.constraint(equalTo: screenTitle.leftAnchor),
-            usernameTextField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30),
+            usernameTextField.topAnchor.constraint(equalTo: screenTitle.bottomAnchor, constant: 40),
+            usernameTextField.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
+            usernameTextField.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
             usernameTextField.heightAnchor.constraint(equalToConstant: 50),
         ])
         
@@ -132,7 +147,7 @@ class CheckoutVC: UIViewController {
         
         NSLayoutConstraint.activate([
             textFieldBorder.topAnchor.constraint(equalTo: usernameTextField.bottomAnchor, constant: 1),
-            textFieldBorder.leftAnchor.constraint(equalTo: usernameTextField.leftAnchor),
+            textFieldBorder.leadingAnchor.constraint(equalTo: usernameTextField.leadingAnchor),
             textFieldBorder.rightAnchor.constraint(equalTo: usernameTextField.rightAnchor),
             textFieldBorder.heightAnchor.constraint(equalToConstant: 2),
         ])
@@ -143,9 +158,8 @@ class CheckoutVC: UIViewController {
         checkoutButton.addTarget(self, action: #selector(pushToFollowerListVC), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
-            checkoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            checkoutButton.topAnchor.constraint(equalTo: usernameTextField.bottomAnchor, constant: 40),
-            checkoutButton.leftAnchor.constraint(equalTo: usernameTextField.leftAnchor),
+            checkoutButton.topAnchor.constraint(equalTo: textFieldBorder.bottomAnchor, constant: 30),
+            checkoutButton.leadingAnchor.constraint(equalTo: usernameTextField.leadingAnchor),
             checkoutButton.rightAnchor.constraint(equalTo: usernameTextField.rightAnchor),
             checkoutButton.heightAnchor.constraint(equalToConstant: 50),
         ])
