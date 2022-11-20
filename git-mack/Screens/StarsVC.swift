@@ -9,7 +9,6 @@ import UIKit
 
 class StarsVC: GMDataLoadingVC {
     let starTableView = UITableView()
-    
     var stars: [Follower] = []
 
     
@@ -90,6 +89,7 @@ extension StarsVC: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: StarCell.reuseID) as! StarCell
         let star = stars[indexPath.row]
         cell.set(user: star)
+        
         return cell
     }
     
@@ -113,7 +113,9 @@ extension StarsVC: UITableViewDataSource, UITableViewDelegate {
                 return
             }
             
-            self.presentGMAlert(title: "오류", message: error.rawValue)
+            DispatchQueue.main.async {
+                self.presentGMAlert(title: "오류", message: error.rawValue)
+            }
         }
     }
 }

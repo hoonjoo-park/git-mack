@@ -36,9 +36,9 @@ class StarCell: UITableViewCell {
     }
     
     func configureUI() {
-        self.backgroundColor = GMColors.subNavy
         addSubviews(avatarImageView, usernameLabel)
         accessoryType = .disclosureIndicator
+        self.backgroundColor = GMColors.subNavy
     }
     
     func configureAvatarImageView() {

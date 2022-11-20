@@ -130,7 +130,7 @@ class CheckoutVC: UIViewController {
         usernameTextField.layer.cornerRadius = 0
         
         NSLayoutConstraint.activate([
-            usernameTextField.topAnchor.constraint(equalTo: screenTitle.bottomAnchor, constant: 40),
+            usernameTextField.topAnchor.constraint(equalTo: screenTitle.bottomAnchor, constant: 30),
             usernameTextField.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
             usernameTextField.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
             usernameTextField.heightAnchor.constraint(equalToConstant: 50),

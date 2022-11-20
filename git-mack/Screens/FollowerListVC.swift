@@ -81,7 +81,6 @@ class FollowerListVC: GMDataLoadingVC {
         
         if followers.isEmpty {
             let message = "해당 사용자를 아무도 팔로우 하고 있지 않습니다 🤔"
-            
             DispatchQueue.main.async { self.showNotFoundView(message: message, view: self.view) }
         }
     }
@@ -122,8 +121,8 @@ class FollowerListVC: GMDataLoadingVC {
         }
         
         hideLoadingView()
-            
     }
+    
     
     func addUserToStars(user: User) {
         let favorite = Follower(id: user.id, login: user.login, avatarUrl: user.avatarUrl)
