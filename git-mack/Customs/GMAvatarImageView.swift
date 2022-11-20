@@ -34,7 +34,7 @@ class GMAvatarImageView: UIImageView {
     
     func downloadImage(url: String) {
         Task {
-            image = await NetworkManager.shared.downloadImage(imageUrl: url) ?? UIImage(named: "place-holder")
+            image = await NetworkManager.shared.downloadImage(imageUrl: url) ?? self.defaultImage
         }
     }
 }

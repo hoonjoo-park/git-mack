@@ -27,12 +27,12 @@ class StarCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        avatarImageView.image = UIImage(named: "place-holder")
+        avatarImageView.image = GMImages.placeholderIcon
     }
     
     func set(user: Follower) {
-        usernameLabel.text = user.login
         avatarImageView.downloadImage(url: user.avatarUrl)
+        usernameLabel.text = user.login
     }
     
     func configureUI() {
