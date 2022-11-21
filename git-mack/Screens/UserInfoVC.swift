@@ -43,7 +43,7 @@ class UserInfoVC: UIViewController {
                 if let error = error as? GMErrorMessage {
                     presentGMAlert(title: "오류", message: error.rawValue)
                 } else {
-                    presentGMAlert(title: "오류", message: "알 수 없는 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.")
+                    presentDefaultError()
                 }
             }
         }

@@ -29,4 +29,12 @@ extension UIViewController {
         let safariVC = SFSafariViewController(url: url)
         present(safariVC, animated: true)
     }
+    
+    func presentDefaultError() {
+        let alertVC = GMAlertVC(title: "오류", message: "알 수 없는 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.")
+        alertVC.modalTransitionStyle = .crossDissolve
+        alertVC.modalPresentationStyle = .overFullScreen
+        
+        present(alertVC, animated: true)
+    }
 }
