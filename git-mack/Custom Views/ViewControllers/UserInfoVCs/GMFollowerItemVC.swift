@@ -8,7 +8,6 @@
 import UIKit
 
 protocol FollowerItemVCDelegate: AnyObject {
-    func onProjectButtonTapped(user: User)
     func onFollowerButtonTapped(user: User)
 }
 

@@ -7,11 +7,6 @@
 
 import UIKit
 
-protocol ItemContainerVCDelegate: AnyObject {
-    func onProjectButtonTapped(user: User)
-    func onFollowerButtonTapped(user: User)
-}
-
 class GMItemContainerVC: UIViewController {
     
     var user: User!
@@ -74,5 +69,6 @@ class GMItemContainerVC: UIViewController {
         ])
     }
     
+    // subVC인 GMFollowerItemVC와 GMProjectsItemVC에서 오버라이딩 해줄 것이기 때문에 선언만 해준다.
     @objc func onButtonTapped() {}
 }
