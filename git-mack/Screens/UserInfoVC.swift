@@ -71,7 +71,7 @@ class UserInfoVC: UIViewController {
     }
     
     
-    private func configureUIElements(user: User) {    
+    private func configureUIElements(user: User) {
         self.add(childVC: GMProfileInfoVC(user: user), containerView: self.profileInfoView)
         self.add(childVC: GMProjectsItemVC(user: user, delegate: self), containerView: self.projectsView)
         self.add(childVC: GMFollowerItemVC(user: user, delegate: self), containerView: self.followersView)
@@ -89,16 +89,16 @@ class UserInfoVC: UIViewController {
         
         for infoView in infoViews {
             infoView.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(infoView)
+            contentView.addSubview(infoView)
             
             NSLayoutConstraint.activate([
-                infoView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-                infoView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+                infoView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+                infoView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
             ])
         }
         
         NSLayoutConstraint.activate([
-            profileInfoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
+            profileInfoView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
             profileInfoView.heightAnchor.constraint(equalToConstant: 180),
             
             projectsView.topAnchor.constraint(equalTo: profileInfoView.bottomAnchor, constant: padding),
@@ -114,9 +114,13 @@ class UserInfoVC: UIViewController {
     
     
     func add(childVC: UIViewController, containerView: UIView) {
+        // 현재의 ViewController에 자식VC로써 childVC를 넣어준다.
         addChild(childVC)
+        // 추가된 childVC의 view가 parentVC의 view에서 보여질 수 있도록 해준다.
         containerView.addSubview(childVC.view)
+        // VC의 프레임을 설정해준다.
         childVC.view.frame = containerView.bounds
+        // childVC 입장에서는 언제 자신이 parentVC에 추가될지 모르기 때문에 -> 그 시점을 알려주는 것
         childVC.didMove(toParent: self)
     }
     
