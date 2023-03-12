@@ -8,6 +8,7 @@
 import UIKit
 
 class CheckoutVC: UIViewController {
+    let scrollView = UIScrollView()
     let stackView = UIStackView()
     let logoImageView: UIImageView = UIImageView()
     let screenTitle: UILabel = UILabel()
@@ -58,18 +59,18 @@ class CheckoutVC: UIViewController {
     }
     
     private func configureStackView() {
-        view.addSubview(stackView)
+        view.addSubview(scrollView)
+        scrollView.frame = view.bounds
+        scrollView.addSubview(stackView)
         
         stackView.axis = .vertical
         stackView.alignment = .center
         stackView.distribution = .equalCentering
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
-        stackView.addArrangedSubview(logoImageView)
-        stackView.addArrangedSubview(screenTitle)
-        stackView.addArrangedSubview(usernameTextField)
-        stackView.addArrangedSubview(textFieldBorder)
-        stackView.addArrangedSubview(checkoutButton)
+        [logoImageView, screenTitle, usernameTextField, textFieldBorder, checkoutButton].forEach { [weak self] subView in
+            self?.stackView.addArrangedSubview(subView)
+        }
         
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
